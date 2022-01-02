@@ -5,10 +5,23 @@
 	<title>Fitts's law calculator</title>
 	<link rel="stylesheet" href="main.css">
 	<script src="jquery-3.6.0.min.js"></script>
+	<script src="leader-line.min.js"></script>
+	<script src="plain-draggable.min.js"></script>
 	<script src="main.js"></script>
 </head>
 <body>
 	<input type="file" name="testFile" id="fileupload"><br/>
 	<div id="dvPreview"></div>
+
+	<div class="dragContainer">
+		<div id="start" style="width:10px; height:10px; background-color:red; border-radius: 40px; margin:200px;">
+			
+		</div>
+
+		<div id="end" style="width:200px; height:100px; background-color:blue; border-radius: 4px;">
+			
+		</div>
+	</div>
+
 </body>
 </html>
