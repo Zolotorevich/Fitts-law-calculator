@@ -7,18 +7,28 @@
 	<script src="jquery-3.6.0.min.js"></script>
 	<script src="leader-line.min.js"></script>
 	<script src="plain-draggable.min.js"></script>
-	<script src="main.js"></script>
+	<script src="imageInput.js"></script>
+	<script src="main.js?12"></script>
 </head>
 <body>
 	<input type="file" name="testFile" id="fileupload"><br/>
-	<div id="dvPreview"></div>
+
+	<div id="imageContainer"></div>
+
+	<div id="bwFilter">Change filter</div>
+
+	<div id="colorSelector">
+		<div class="colorSelectorWhite" data-color="#fff"></div>
+		<div class="colorSelectorBlack" data-color="#000"></div>
+		<div class="colorSelectorPurple" data-color="#ec17cb"></div>
+	</div>
 
 	<div class="dragContainer">
 		<div id="start" style="width:10px; height:10px; background-color:red; border-radius: 40px; margin:200px;">
 			
 		</div>
 
-		<div id="end" style="width:200px; height:100px; background-color:blue; border-radius: 4px;">
+		<div id="end" style="width:200px; height:100px; background-color:black; border-radius: 4px; opacity: .5;">
 			
 		</div>
 	</div>
