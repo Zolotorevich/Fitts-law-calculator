@@ -47,17 +47,26 @@ $(document).ready(function(){
 		onMove: function() {
 			line.position();
 			lineB.position();
+			fitts();
 		},
 		zIndex: 100
 	});
 
 	new PlainDraggable(endElement, {
-
 		onMove: function() {
 			line.position();
 			lineB.position();
+			fitts();
 		},
 		zIndex: 100
 	});
 
+});
+
+
+//window scroll event
+$( document ).scroll(function() {
+	line.position();
+	lineB.position();
+	fitts();
 });
