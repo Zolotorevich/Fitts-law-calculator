@@ -42,24 +42,8 @@ $(document).ready(function(){
 		zIndex: 100
 		});
 
-	//make draggable
-	new PlainDraggable(startElement, {
-		onMove: function() {
-			line.position();
-			lineB.position();
-			fitts();
-		},
-		zIndex: 100
-	});
-
-	new PlainDraggable(endElement, {
-		onMove: function() {
-			line.position();
-			lineB.position();
-			fitts();
-		},
-		zIndex: 100
-	});
+	new DragObject(startElement);
+	new DragObject(endElement);
 
 });
 
