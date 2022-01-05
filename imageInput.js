@@ -1,3 +1,7 @@
+//global image input varibles
+imageScale = 1; //1 is 100%
+imageOriginalWidth = 0;
+
 //show image from input
 function showImageFromFileInput() {
 	//TODO add fade in and out effects
@@ -17,19 +21,24 @@ function showImageFromFileInput() {
 		//create FileReader obj
 		var reader = new FileReader();
 
-		//get file name from input
+		//read file from storage
+		reader.readAsDataURL($("#fileupload")[0].files[0]);
+
+		//add image to container
 		reader.onload = function (e) {
-			//add image to container
 			$("#imageContainer img").attr("src", e.target.result);
 		}
 
-		//read file from input
-		reader.readAsDataURL($("#fileupload")[0].files[0]);
+		//save image width after its loads
+		$("#imageContainer img").on('load', function(){
+			imageOriginalWidth = $('#imageContainer img').width();
+		});
 
 	} else {
-		//display error: it's not an image
+		//TODO display error: it's not an image
 		alert("Please upload a valid image file.");
 	}
+
 };
 
 //change image filter
@@ -41,8 +50,16 @@ function changeImageFilter() {
 	} else {
 		//make image color
 		$('#imageContainer img').css({'filter':'none'});
-	}
-	
+	};
 };
 
-//TODO image scale
+//scale image
+function scaleImage(targetScale) {
+	//apply image new width
+	$('#imageContainer img').css({
+		'width':(imageOriginalWidth * targetScale) + 'px'
+	});
+
+	//save new scale
+	imageScale = targetScale;
+};
