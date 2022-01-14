@@ -34,6 +34,9 @@ function showImageFromFileInput() {
 			imageOriginalWidth = $('#imageContainer img').width();
 		});
 
+		//TODO try get the filename
+		console.log('filename: ' + $("#fileupload")[0].files[0].name);
+
 	} else {
 		//TODO display error: it's not an image
 		alert("Please upload a valid image file.");
@@ -62,4 +65,6 @@ function scaleImage(targetScale) {
 
 	//save new scale
 	imageScale = targetScale;
+
+	//TODO display scale
 };

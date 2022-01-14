@@ -45,6 +45,11 @@ $(document).ready(function(){
 	new DragObject(startElement);
 	new DragObject(endElement);
 
+	//click on image
+	$('.dragContainer').on('click', function( event ) {
+		moveStartPositionToClick(event.pageX, event.pageY);
+	});
+
 });
 
 
@@ -54,3 +59,17 @@ $( document ).scroll(function() {
 	lineB.position();
 	fitts();
 });
+
+//
+function moveStartPositionToClick(cursorX, cursorY) {
+	//check if click wasn't inside end element
+	
+	//change start element position
+	$('#start').offset({ top: cursorY, left: cursorX });
+
+	//redraw lines
+	line.position();
+	lineB.position();
+	fitts();
+
+}

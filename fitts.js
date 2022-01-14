@@ -2,15 +2,15 @@
 indexOfDifficulty = 2.2;
 widthMultiplier = 4;
 shannonFormula = true;
-minimalWidth = 64; //in px
+minimalWidth = 64; //px
 
 //calculate Fitts's law
 function fitts() {
 	//get position of start element
-	startPosition = $('#start').position();
+	startPosition = $('#start').offset();
 
 	//get position of end element
-	endPosition = $('#end').position();
+	endPosition = $('#end').offset();
 
 	//get center points positions
 	startPositionX = startPosition.left + ($('#start').width() / 2);

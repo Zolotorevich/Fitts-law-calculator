@@ -28,3 +28,7 @@
 	right:20px;
 	z-index: 200;
 }
+
+#start, #end {
+	cursor: move;
+}
