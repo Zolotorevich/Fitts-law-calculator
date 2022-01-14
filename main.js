@@ -4,15 +4,20 @@ var selectedColor = '#000';
 //events handlers
 $(document).ready(function(){
 
-	//file input has a new image
-	$("#fileupload").change( function() {
-		showImageFromFileInput();
+	//click on upload in mainScreen
+	$('#startScreenUploadBtn').on('click', function() {
+		$("#fileupload").click();
 	});
 
-	//make image b/w
-	$('#bwFilter').on('click', function() {
-		changeImageFilter();
-	});
+	// //file input has a new image
+	// $("#fileupload").change( function() {
+	// 	showImageFromFileInput();
+	// });
+
+	// //make image b/w
+	// $('#bwFilter').on('click', function() {
+	// 	changeImageFilter();
+	// });
 
 	//dragable elements
 	startElement = document.getElementById('start');
@@ -23,53 +28,42 @@ $(document).ready(function(){
       {
 		  startPlug: 'behind',
 		  endPlug: 'behind',
-		  color: 'red',
-		  size: 4,
+		  color: 'rgba(223, 34, 34, 0.8)',
+		  size: 2,
 		  path: 'straight',
 		  startSocket: 'auto',
 		  endSocket: 'auto',
 		  zIndex: 100
 		});
 
-	lineB = new LeaderLine(LeaderLine.pointAnchor(startElement), LeaderLine.pointAnchor(endElement),
-	{
-		startPlug: 'behind',
-		endPlug: 'behind',
-		color: 'black',
-		size: 2,
-		startSocket: 'auto',
-		endSocket: 'auto',
-		zIndex: 100
-		});
-
 	new DragObject(startElement);
 	new DragObject(endElement);
 
-	//click on image
-	$('.dragContainer').on('click', function( event ) {
-		moveStartPositionToClick(event.pageX, event.pageY);
-	});
+	// //click on image
+	// $('.dragContainer').on('click', function( event ) {
+	// 	moveStartPositionToClick(event.pageX, event.pageY);
+	// });
 
 });
 
 
 //window scroll event
-$( document ).scroll(function() {
-	line.position();
-	lineB.position();
-	fitts();
-});
+// $( document ).scroll(function() {
+// 	line.position();
+// 	lineB.position();
+// 	fitts();
+// });
 
-//
-function moveStartPositionToClick(cursorX, cursorY) {
-	//check if click wasn't inside end element
+// //
+// function moveStartPositionToClick(cursorX, cursorY) {
+// 	//check if click wasn't inside end element
 	
-	//change start element position
-	$('#start').offset({ top: cursorY, left: cursorX });
+// 	//change start element position
+// 	$('#start').offset({ top: cursorY, left: cursorX });
 
-	//redraw lines
-	line.position();
-	lineB.position();
-	fitts();
+// 	//redraw lines
+// 	line.position();
+// 	lineB.position();
+// 	fitts();
 
-}
+// }

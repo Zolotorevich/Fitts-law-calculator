@@ -1,34 +1,298 @@
-.dragContainer {
-	position: fixed;
-	top:0;
-	left:0;
-	width: 100%;
-	height: 100%;
-	z-index: 2;
+/**
+ * @license
+ * MyFonts Webfont Build ID 3736749, 2019-03-20T08:44:16-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: TTNormsPro-Bold by TypeType
+ * URL: https://www.myfonts.com/fonts/type-type/tt-norms/bold/
+ * 
+ * Webfont: TTNormsPro-Italic by TypeType
+ * URL: https://www.myfonts.com/fonts/type-type/tt-norms/ital/
+ * 
+ * Webfont: TTNormsPro-Regular by TypeType
+ * URL: https://www.myfonts.com/fonts/type-type/tt-norms/regular/
+ * 
+ * Webfont: TTNormsPro-Medium by TypeType
+ * URL: https://www.myfonts.com/fonts/type-type/tt-norms/medium/
+ * 
+ * 
+ * License: https://www.myfonts.com/viewlicense?type=web&buildid=3736749
+ * Licensed pageviews: 20,000
+ * Webfonts copyright: Copyright (c) 2016-2019 by TypeType. Designers Ivan Gladkikh, Pavel Emelyanov. Technical designers Vika Usmanova, Olexa Volochay, Nadyr Rakhimov. All rights reserved.
+ * 
+ * © 2019 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/3904ad");
+  
+@font-face {font-family: 'TTNormsPro-Bold';src: url('webfonts/3904AD_3_0.eot');src: url('webfonts/3904AD_3_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3904AD_3_0.woff2') format('woff2'),url('webfonts/3904AD_3_0.woff') format('woff'),url('webfonts/3904AD_3_0.ttf') format('truetype');}
+ 
+@font-face {font-family: 'TTNormsPro-Regular';src: url('webfonts/3904AD_B_0.eot');src: url('webfonts/3904AD_B_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3904AD_B_0.woff2') format('woff2'),url('webfonts/3904AD_B_0.woff') format('woff'),url('webfonts/3904AD_B_0.ttf') format('truetype');}
+
+:root {
+	--yellow-color: #eccc2c;
+	--back-color:#1a1b1d;
+	--white-color:#dce9f6;
+	--calm-white:#acb1b7;
+	--reset-red:#df2222;
 }
 
-#imageContainer {
-	position: absolute;
-	top:200px;
-	z-index: -1;
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'TTNormsPro-Regular';
+	font-size:16px;
+	color: var(--white-color);
+	background-color: var(--back-color);
+	min-width: 1024px;
+	overflow-x: hidden;
 }
 
 #fileupload {
 	position: absolute;
-	z-index: 3;
+	top:-100px;
 }
 
-#imageContainer img {
-	transition: 1s all;
+/* FORMULA VIEW */
+#formulaImg {
+	width: 817px;
+	height: 58px;
+	position: fixed;
+	top:calc(50% - 60px);
+	left:calc(50% - 409px);
 }
 
-#bwFilter {
+.formulaHints div {
+	line-height: 20px;
+	position: fixed;
+	color:var(--calm-white);
+}
+
+.formulaHints span {
+	cursor: pointer;
+	border-bottom: 1px dotted var(--calm-white);
+}
+
+.formulaHints span:hover {
+	color:var(--white-color);
+	border-bottom: 1px dotted var(--yellow-color);
+	color:var(--yellow-color);
+}
+
+.formulaCircles div {
+	position: fixed;
+	z-index: 10;
+}
+
+.formulaInputs div {
+	position: fixed;
+	text-align: center;
+	color:var(--calm-white);
+}
+
+.formulaInputs input {
+	font-family: 'TTNormsPro-Regular';
+	font-size:28px;
+	color: var(--white-color);
+	background-color: #000;
+	border-radius: 4px;
+	border:1px solid #49443a;
+	width:81px;
+	height: 42px;
+	text-align: center;
+	padding-top:4px;
+	z-index: 10;
+}
+
+.formulaInputs input:disabled {
+	font-family: 'TTNormsPro-Regular';
+	font-size:28px;
+	color: #868583;
+	background-color: #353331;
+	border-radius: 4px;
+	border:1px solid #4a4844;
+	width:81px;
+	height: 42px;
+	text-align: center;
+	padding-top:4px;
+}
+
+.formulaInputs input:focus {
+	outline: none;
+	border: 1px solid var(--yellow-color);
+}
+
+.formulaInputLargeHint {
+	font-size:28px;
+	opacity:.7;
+}
+
+.resetControls {
+	position: fixed;
+	bottom:40px;
+	left:calc(50% - 380px);
+	color:var(--reset-red);
+}
+
+.resetControls span {
+	opacity: .7;
+	cursor: pointer;
+	margin-left:20px;
+}
+
+.resetControls span:hover {
+	opacity: 1;
+}
+
+.formulaVerticalLines div {
+	position: fixed;
+	z-index: 2;
+	width: 1px;
+	background-color: rgba(220, 233, 246, 0.2);
+}
+
+
+/* CIRCLES AND LINES */
+.smallCircle {
+	width:7px;
+	height:7px;
+	border-radius: 7px;
+}
+
+.grayCircle {
+	background-color: var(--calm-white);
+}
+
+.yellowCircle {
+	background-color: var(--yellow-color);
+}
+
+.leader-line {
+	z-index: 1;
+}
+
+/* ZR LOGO */
+#zrLogo {
+    position: fixed;
+    left:calc(50% - 410px);
+    bottom:40px;
+	z-index: 2000;
+	opacity:.5;
+    content: url("data:image/svg+xml;charset=UTF-8, <svg version='1.1' height='26px' width='32px' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'><path fill='rgb(250, 250, 250)' d='M11.5,8.9c1.9,0,3.5-1.6,3.5-3.4c0-2-1.5-3.6-3.8-3.6H9H7H0.6v1.4h5.8L0,14h7h1.5h0V7.7L14,14h2L11.5,8.9z M7,12.6H2.6L7,5.2V12.6z M9.1,5.6c0-1.2,1-2.2,2.2-2.2c1.2,0,2.2,1,2.2,2.2c0,1.2-1,2.2-2.2,2.2C10.1,7.8,9.1,6.8,9.1,5.6z'/></svg>");
+}
+
+#zrLogo:hover{
+	opacity:1;
+    content: url("data:image/svg+xml;charset=UTF-8, <svg version='1.1' height='26px' width='32px' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'><path fill='rgb(250, 250, 250)' d='M11.5,8.9c1.9,0,3.5-1.6,3.5-3.4c0-2-1.5-3.6-3.8-3.6H9H7H0.6v1.4h5.8L0,14h7h1.5h0V7.7L14,14h2L11.5,8.9z M7,12.6H2.6L7,5.2V12.6z M9.1,5.6c0-1.2,1-2.2,2.2-2.2c1.2,0,2.2,1,2.2,2.2c0,1.2-1,2.2-2.2,2.2C10.1,7.8,9.1,6.8,9.1,5.6z'/></svg>");
+}
+
+/* START SCREEN */
+#startScreen {
 	position: absolute;
-	top:20px;
-	right:20px;
-	z-index: 200;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	-webkit-backdrop-filter: sepia(100%) blur(4px);
+	backdrop-filter: sepia(100%) blur(4px);
+	z-index: 1000;
+	display:none;
 }
 
+.startScreenHint {
+	font-size: 28px;
+	position: absolute;
+	left:calc(50% - 410px);
+}
+
+.startScreenHint span {
+	color:var(--yellow-color);
+	font-family: 'TTNormsPro-Bold';
+}
+
+.startScreenCircles div {
+	position: absolute;
+	left:calc(50% - 430px);
+}
+
+.startScreenVerticalLine {
+	width:1px;
+	height:306px;
+	background-color: var(--yellow-color);
+	left:calc(50% - 427px) !important;
+	top:calc(50% - 238px);
+}
+
+#startScreenUploadBtn {
+	position: absolute;
+	left:calc(50% - 410px);
+	top:calc(50% - 110px);
+	width: 440px;
+	height: 70px;
+	border-radius: 4px;
+	background-color: var(--yellow-color);
+	text-align: center;
+	color: var(--back-color);
+	padding: 10px 0 0 0;
+	cursor:pointer;
+}
+
+#startScreenUploadBtn h1 {
+	margin: 0;
+	padding:0;
+	font-weight: normal;
+	font-size: 28px;
+}
+
+#startScreenUploadBtn span {
+	opacity: .7;
+}
+
+
+
+/* MARKERS */
 #start, #end {
 	cursor: move;
+	z-index: 3000;
+	position: absolute;
+}
+
+#start {
+	width:20px;
+	height:20px;
+	left:calc(50% - 330px);
+	top:calc(50% + 55px);
+	border:2px solid #df2222;
+	border-radius: 40px;
+}
+
+#start div {
+	width: 18px;
+	height: 18px;
+	background-color: #df2222;
+	border-radius: 40px;
+	margin:1px 0 0 1px;
+}
+
+#end {
+	width:100px;
+	height:25px;
+	background-color:#df2222;
+	color:#fff;
+	border-radius: 4px;
+	opacity: .5;
+	top:calc(50% + 52px);
+	left:calc(50% + 20px);
 }

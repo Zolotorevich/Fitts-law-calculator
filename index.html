@@ -6,14 +6,196 @@
 	<link rel="stylesheet" href="main.css">
 	<script src="jquery-3.6.0.min.js"></script>
 	<script src="leader-line.min.js"></script>
-	<script src="plain-draggable.min.js"></script>
 	<script src="imageInput.js"></script>
 	<script src="fitts.js?12"></script>
 	<script src="dragMaster.js"></script>
+	<script src="decor.js"></script>
 	<script src="main.js?12"></script>
 </head>
 <body>
-	<input type="file" name="testFile" id="fileupload"><br/>
+
+	<input type="file" name="testFile" id="fileupload">
+	<!-- <div id="start"><div></div></div>
+	<div id="end"><div id="result"></div></div> -->
+
+
+	<!-- FORMULA VIEW BEGIN -->
+	<div id="formula">
+		<img src="formula.svg" alt="" id="formulaImg">
+
+		<div class="formulaHints">
+			<div style="top:calc(50% - 30px - 100px - 7px); left:calc(50% - 370px + 12px);">
+				movement time
+			</div>
+
+			<div style="top:calc(50% - 30px - 150px - 7px); left:calc(50% - 259px + 12px);">
+				reaction time
+			</div>
+
+			<div style="top:calc(50% - 30px - 210px - 7px); left:calc(50% - 170px + 12px);">
+				time of processing one bit</br>by human nervous system
+			</div>
+
+			<div style="top:calc(50% - 30px - 150px - 7px); left:calc(50% - 80px + 12px);">
+				difficulty of the various<br/>combinations of D and W
+			</div>
+
+			<div style="top:calc(50% - 30px - 150px - 7px); left:calc(50% + 322px + 12px);">
+				distance to target
+			</div>
+
+			<div style="top:calc(50% - 30px - 180px - 7px); left:calc(50% + 372px + 12px);">
+				target width
+			</div>
+
+			<div style="top:calc(50% - 30px + 201px - 7px); left:calc(50% - 259px + 12px);">
+				click on target not included,
+				<br/><span id="includeClickInValueA">use 570 ms</span> if needed
+			</div>
+		</div>
+
+		<div class="formulaCircles">
+			<div id="formulaCircleMT" class="smallCircle grayCircle" style="top:calc(50% - 30px - 100px); left:calc(50% - 370px);"></div>
+
+			<div id="formulaCircleA" class="smallCircle grayCircle" style="top:calc(50% - 30px - 150px); left:calc(50% - 259px);"></div>
+
+			<div id="formulaCircleAS" class="smallCircle grayCircle" style="top:calc(50% - 30px + 201px); left:calc(50% - 259px);"></div>
+
+			<div id="formulaCircleB" class="smallCircle grayCircle" style="top:calc(50% - 30px - 210px); left:calc(50% - 170px);"></div>
+
+			<div id="formulaCircleID" class="smallCircle grayCircle" style="top:calc(50% - 30px - 150px); left:calc(50% - 80px);"></div>
+
+			<div id="formulaCircleD" class="smallCircle grayCircle" style="top:calc(50% - 30px - 150px); left:calc(50% + 322px);"></div>
+
+			<div id="formulaCircleW" class="smallCircle grayCircle" style="top:calc(50% - 30px - 180px); left:calc(50% + 372px);"></div>
+
+			<div id="formulaCircleRatio" style="top:calc(50% - 30px + 104px); left:calc(50% + 372px + 63px);"></div>
+		</div>
+
+		<div class="formulaInputs">
+
+			<div id="formulaInputMT" style="top:calc(50% - 30px + 80px); left:calc(50% - 370px - 39px);">
+				<input type="text" value="1"><br/>
+				sec
+			</div>
+
+			<div id="formulaInputA" style="top:calc(50% - 30px + 80px); left:calc(50% - 259px - 39px);">
+				<input type="text" value="150"><br/>
+				ms
+			</div>
+
+			<div id="formulaInputB" style="top:calc(50% - 30px + 80px); left:calc(50% - 170px - 39px);">
+				<input type="text" value="50"><br/>
+				ms
+			</div>
+
+			<div id="formulaInputID" style="top:calc(50% - 30px + 80px); left:calc(50% - 80px - 39px);">
+				<input type="text" value="4" disabled><br/>
+			</div>
+
+			<div id="formulaInputW" style="top:calc(50% - 30px + 80px); left:calc(50% + 372px - 39px);">
+				<input type="text" value="160" disabled><br/>
+				px
+			</div>
+
+			<div style="top:calc(50% - 30px + 88px); left:calc(50% + 372px + 56px); font-size: 27px !important;" class="formulaInputLargeHint">
+				×
+			</div>
+
+			<div id="formulaInputHeight" style="top:calc(50% - 30px + 60px); left:calc(50% + 490px - 39px);">
+				height<br/>
+				<input type="text" value="40" disabled><br/>
+				px
+			</div>
+
+			<div style="top:calc(50% - 30px + 188px); left:calc(50% + 322px - 80px);" class="formulaInputLargeHint">
+				2 •
+			</div>
+
+			<div id="formulaInputD" style="top:calc(50% - 30px + 180px); left:calc(50% + 322px - 39px);">
+				<input type="text" value="280" disabled><br/>
+				px
+			</div>
+
+			<div id="formulaInputRatio" style="top:calc(50% - 30px + 180px); left:calc(50% + 436px - 43px);">
+				<input type="text" value="4"><br/>
+				ratio
+			</div>
+
+		</div>
+
+		<div class="formulaVerticalLines">
+			<div style="height:180px; top:calc(50% - 30px - 100px); left:calc(50% - 370px + 3px);"></div>
+
+			<div style="height:230px; top:calc(50% - 30px - 150px); left:calc(50% - 259px + 3px);"></div>
+
+			<div style="height:50px; top:calc(50% - 50px - 30px + 201px); left:calc(50% - 259px + 3px);"></div>
+
+			<div style="height:290px; top:calc(50% - 30px - 210px); left:calc(50% - 170px + 3px);"></div>
+
+			<div style="height:230px; top:calc(50% - 30px - 150px); left:calc(50% - 80px + 3px);"></div>
+
+			<div style="height:330px; top:calc(50% - 30px - 150px); left:calc(50% + 322px + 3px);"></div>
+
+			<div style="height:260px; top:calc(50% - 30px - 180px); left:calc(50% + 372px + 3px);"></div>
+
+			<div style="height:76px; top:calc(50% - 30px + 104px); left:calc(50% + 372px + 62px);"></div>
+
+		</div>
+
+		<div class="resetControls">
+			<span id="resetFormulaCtrl">Reset formula</span>
+			<span id="resetMarksCtrl">Reset markers position</span>
+		</div>
+
+		<a href="http://zolotorevich.com/"><div id="zrLogo"></div></a>
+
+	</div>
+
+	<!-- FORMULA VIEW END -->
+
+	<!-- START SCREEN BEGIN -->
+
+	<div id="startScreen">
+
+		<div class="startScreenCircles">
+			<div class="smallCircle yellowCircle" style="top:calc(50% - 238px);"></div>
+
+			<div class="smallCircle yellowCircle" style="top:calc(50% - 88px);"></div>
+
+			<div class="smallCircle yellowCircle" style="top:calc(50% + 62px);"></div>
+
+			<div class="startScreenVerticalLine"></div>
+		</div>
+
+		<div id="startScreenUploadBtn">
+			<h1>Choose image of interest</h1>
+			<span>it won't be uploaded to server</span>
+
+		</div>
+
+		<div class="startScreenHint" style="top:calc(50% - 250px);">
+			<span>Fitts’ law</span> measure cursor travel time to button<br/>
+			and shows what size that target must be.
+		</div>
+
+		<div class="startScreenHint" style="top:calc(50% + 50px);">
+			Move&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to cursor strat position and&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;over the target.
+		</div>
+
+	</div>
+
+	<!-- START SCREEN END -->
+
+	<!-- IMAGE VIEW BEGIN -->
+
+	
+
+	<!-- IMAGE VIEW END -->
+
+
+
+	<!-- <br/>
 
 	<div id="imageContainer"></div>
 
@@ -34,7 +216,7 @@
 			<div id="result"></div>
 			
 		</div>
-	</div>
+	</div> -->
 
 </body>
 </html>
