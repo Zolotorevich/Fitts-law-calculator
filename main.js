@@ -9,6 +9,13 @@ $(document).ready(function(){
 		$("#fileupload").click();
 	});
 
+	//click on upload in top bar
+	$('#imageControlFile').on('click', function() {
+		$("#fileupload").click();
+	});
+
+	
+
 	// //file input has a new image
 	// $("#fileupload").change( function() {
 	// 	showImageFromFileInput();

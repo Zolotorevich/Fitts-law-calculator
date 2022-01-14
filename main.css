@@ -42,6 +42,7 @@
 	--white-color:#dce9f6;
 	--calm-white:#acb1b7;
 	--reset-red:#df2222;
+	--topbar-hover:rgba(255,255,255,.1);
 }
 
 html {
@@ -229,10 +230,10 @@ body {
 
 .startScreenVerticalLine {
 	width:1px;
-	height:306px;
+	height:calc(50% + 65px);
 	background-color: var(--yellow-color);
 	left:calc(50% - 427px) !important;
-	top:calc(50% - 238px);
+	top:0;
 }
 
 #startScreenUploadBtn {
@@ -259,7 +260,6 @@ body {
 #startScreenUploadBtn span {
 	opacity: .7;
 }
-
 
 
 /* MARKERS */
@@ -296,3 +296,112 @@ body {
 	top:calc(50% + 52px);
 	left:calc(50% + 20px);
 }
+
+/* IMAGE VIEW BAR */
+#imageControlsBar {
+	width: 100%;
+	height: 54px;
+	background-color: rgba(0, 0, 0, 0.8);
+	-webkit-backdrop-filter: sepia(100%) blur(4px);
+	backdrop-filter: sepia(100%) blur(4px);
+	display: flex;
+	justify-content: space-between;
+	z-index: 2000;
+	position: relative;
+}
+
+.imageLeftControls, .imagerightControls {
+	width: 300px;
+}
+
+.imageLeftControls div {
+	float:left;
+}
+
+.imagerightControls div {
+	float:right;
+}
+
+#imageControlColor:hover, #imageControlMeasureValue:hover, #imageControlBW:hover, #imageControlScalePlus:hover, #imageControlScaleMinus:hover {
+	background-color: var(--topbar-hover);
+	cursor: pointer;
+}
+
+#imageControlColor {
+	padding:19px 20px 0 20px;
+	height:35px;
+}
+
+#imageControlColor div {
+	width: 34px;
+	height: 16px;
+	border-radius: 4px;
+}
+
+.colorCtrlRed {
+	background-color: #df2222;
+}
+
+#imageControlMeasureValue {
+	padding:19px 10px 0 10px;
+	height: 35px;
+}
+
+#imageControlBW {
+	padding:19px 20px 0 20px;
+	height: 35px;
+}
+
+#imageControlBW div {
+	width: 28px;
+	height: 18px;
+	content: url("data:image/svg+xml;charset=UTF-8, <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='28px' height='18px'> <path fill-rule='evenodd'  fill='rgb(220, 233, 246)' d='M24.308,17.910 L22.987,17.910 L21.006,11.608 L19.025,17.910 L17.705,17.910 L14.944,9.507 L16.324,9.507 L18.365,15.809 L20.346,9.507 L21.666,9.507 L23.647,15.809 L25.688,9.507 L27.069,9.507 L24.308,17.910 ZM4.704,17.573 L15.452,0.279 L17.675,0.279 L6.928,17.573 L4.704,17.573 ZM6.458,6.327 C6.458,7.647 5.317,8.788 3.696,8.788 L0.155,8.788 L0.155,0.384 L3.516,0.384 C5.017,0.384 6.037,1.405 6.037,2.605 C6.037,3.866 5.017,4.286 5.017,4.286 C5.017,4.286 6.458,4.826 6.458,6.327 ZM3.516,1.525 L1.475,1.525 L1.475,3.806 L3.516,3.806 C4.237,3.806 4.717,3.326 4.717,2.665 C4.717,2.005 4.237,1.525 3.516,1.525 ZM3.696,4.886 L1.475,4.886 L1.475,7.647 L3.696,7.647 C4.537,7.647 5.137,7.047 5.137,6.267 C5.137,5.486 4.537,4.886 3.696,4.886 Z'/></svg>");
+}
+
+#imageControlScalePlus, #imageControlScaleMinus {
+	padding:19px 20px 0 20px;
+	height: 35px;
+}
+
+#imageControlScaleMinus div {
+	margin:7px 0 0 0;
+	width: 16px;
+	height: 2px;
+	content: url("data:image/svg+xml;charset=UTF-8, <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='16px' height='2px'> <path fill-rule='evenodd'  fill='rgb(220, 233, 246)' d='M-0.000,-0.000 L16.000,-0.000 L16.000,2.000 L-0.000,2.000 L-0.000,-0.000 Z'/></svg>");
+}
+
+#imageControlScalePlus div {
+	width: 16px;
+	height: 16px;
+	content: url("data:image/svg+xml;charset=UTF-8, <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='16px' height='16px'> <path fill-rule='evenodd'  fill='rgb(220, 233, 246)' d='M16.000,9.000 L9.000,9.000 L9.000,16.000 L7.000,16.000 L7.000,9.000 L-0.000,9.000 L-0.000,7.000 L7.000,7.000 L7.000,-0.000 L9.000,-0.000 L9.000,7.000 L16.000,7.000 L16.000,9.000 Z'/></svg>");
+}
+
+#imageControlScale {
+	padding:19px 0 0 0;
+	height: 35px;
+	width: 40px;
+	text-align: center;
+}
+
+#imageControlMeasureValue:hover {
+	color: #fff;
+	cursor: pointer;
+}
+
+#imageControlFile {
+	margin: 12px 0 0 0;
+	width: 440px;
+	height: 30px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	background-color: var(--yellow-color);
+	text-align: center;
+	color: var(--back-color);
+	padding: 12px 0 0 0;
+	cursor:pointer;
+	/* font-family: 'TTNormsPro-Bold'; */
+}
+
+
+
+/* IMAGE CONTAINER */
