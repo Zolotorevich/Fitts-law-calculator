@@ -154,6 +154,7 @@ function DragObject(element) {
 	this.onDragMove = function(x, y) {
 		element.style.top =  y - mouseOffset.y +'px';
 		element.style.left = x - mouseOffset.x +'px';
+		//added fitts'
 		line.position();
 		lineB.position();
 		fitts();

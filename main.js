@@ -14,6 +14,21 @@ $(document).ready(function(){
 		$("#fileupload").click();
 	});
 
+	//make image b/w
+	$('#imageControlBW').on('click', function() {
+		changeImageFilter();
+	});
+
+	//Include click in formula
+	$('#valueA150').on('click', function() {
+		$('#formulaInputA input').val('150');
+	});
+
+	$('#valueA570').on('click', function() {
+		$('#formulaInputA input').val('570');
+	});
+	
+
 	
 
 	// //file input has a new image
@@ -21,10 +36,7 @@ $(document).ready(function(){
 	// 	showImageFromFileInput();
 	// });
 
-	// //make image b/w
-	// $('#bwFilter').on('click', function() {
-	// 	changeImageFilter();
-	// });
+	
 
 	//dragable elements
 	startElement = document.getElementById('start');

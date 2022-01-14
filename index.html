@@ -15,8 +15,8 @@
 <body>
 
 	<input type="file" name="testFile" id="fileupload">
-	<!-- <div id="start"><div></div></div>
-	<div id="end"><div id="result"></div></div> -->
+	<div id="start"><div></div></div>
+	<div id="end"><div id="result"></div></div>
 
 
 	<!-- FORMULA VIEW BEGIN -->
@@ -48,9 +48,9 @@
 				target width
 			</div>
 
-			<div style="top:calc(50% - 30px + 201px - 7px); left:calc(50% - 259px + 12px);">
-				click on target not included,
-				<br/><span id="includeClickInValueA">use 570 ms</span> if needed
+			<div style="top:calc(50% - 44px + 201px - 7px); left:calc(50% - 259px + 12px); line-height: 24px !important;">
+				<span id="valueA150">150 ms</span> &mdash; cursor hover target
+				<br/><span id="valueA570">570 ms</span> &mdash; hover and click
 			</div>
 		</div>
 
@@ -59,7 +59,7 @@
 
 			<div id="formulaCircleA" class="smallCircle grayCircle" style="top:calc(50% - 30px - 150px); left:calc(50% - 259px);"></div>
 
-			<div id="formulaCircleAS" class="smallCircle grayCircle" style="top:calc(50% - 30px + 201px); left:calc(50% - 259px);"></div>
+			<div id="formulaCircleAS" class="smallCircle grayCircle" style="top:calc(50% - 44px + 201px); left:calc(50% - 259px);"></div>
 
 			<div id="formulaCircleB" class="smallCircle grayCircle" style="top:calc(50% - 30px - 210px); left:calc(50% - 170px);"></div>
 
@@ -80,7 +80,7 @@
 			</div>
 
 			<div id="formulaInputA" style="top:calc(50% - 30px + 80px); left:calc(50% - 259px - 39px);">
-				<input type="text" value="150"><br/>
+				<input type="text" value="570"><br/>
 				ms
 			</div>
 
@@ -129,7 +129,7 @@
 
 			<div style="height:230px; top:calc(50% - 30px - 150px); left:calc(50% - 259px + 3px);"></div>
 
-			<div style="height:50px; top:calc(50% - 50px - 30px + 201px); left:calc(50% - 259px + 3px);"></div>
+			<div style="height:44px; top:calc(50% - 50px - 30px + 201px); left:calc(50% - 259px + 3px);"></div>
 
 			<div style="height:290px; top:calc(50% - 30px - 210px); left:calc(50% - 170px + 3px);"></div>
 
@@ -222,9 +222,11 @@
 
 	</div>
 
-	<div id="imageViewContainer" style="height: 4000px;">
+	<div id="imageViewContainer">
 
-		<div id="imageContainer"></div>
+		<div id="imageContainer">
+			<img src="2-0-Main-feed.png" alt="">
+		</div>
 
 	</div>
 

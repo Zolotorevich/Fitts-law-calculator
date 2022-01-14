@@ -270,6 +270,7 @@ body {
 }
 
 #start {
+	position: fixed;
 	width:20px;
 	height:20px;
 	left:calc(50% - 330px);
@@ -287,6 +288,7 @@ body {
 }
 
 #end {
+	position: fixed;
 	width:100px;
 	height:25px;
 	background-color:#df2222;
@@ -405,3 +407,22 @@ body {
 
 
 /* IMAGE CONTAINER */
+#imageViewContainer {
+	width: 100%;
+	position: relative;
+	z-index: 2000;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.8);
+	-webkit-backdrop-filter: sepia(100%) blur(4px);
+	backdrop-filter: sepia(100%) blur(4px);
+	overflow-x: hidden;
+}
+
+#imageContainer {
+	margin:0 auto;
+}
+
+#imageContainer img {
+	transition: all 1s;
+	margin:0 0 200px 0;
+}
