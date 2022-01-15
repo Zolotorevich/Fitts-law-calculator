@@ -217,7 +217,6 @@ body {
 	-webkit-backdrop-filter: sepia(100%) blur(4px);
 	backdrop-filter: sepia(100%) blur(4px);
 	z-index: 1000;
-	display:none;
 }
 
 .startScreenHint {
@@ -314,11 +313,11 @@ body {
 	background-color: rgba(0, 0, 0, 0.8);
 	-webkit-backdrop-filter: sepia(100%) blur(4px);
 	backdrop-filter: sepia(100%) blur(4px);
-	display: flex;
+	display: none;
 	justify-content: space-between;
 	z-index: 2000;
 	position: relative;
-	/* margin-top:100vh; */
+	margin-top:100vh;
 }
 
 .imageLeftControls, .imagerightControls {
@@ -413,7 +412,6 @@ body {
 	white-space: nowrap;
   	overflow: hidden;
 	text-overflow: ellipsis;
-	/* font-family: 'TTNormsPro-Bold'; */
 }
 
 
@@ -430,6 +428,7 @@ body {
 	backdrop-filter: sepia(100%) blur(4px);
 	overflow-x: hidden;
 	margin:0 0 0 -150%;
+	display: none;
 }
 
 #imageContainer {
@@ -439,4 +438,5 @@ body {
 #imageContainer img {
 	transition: filter 1s;
 	margin:0 0 150px 0;
+	box-shadow: 0 20px 20px rgba(0, 0, 0, 0.8);
 }
