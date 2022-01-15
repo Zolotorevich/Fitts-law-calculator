@@ -23,17 +23,20 @@ $(document).ready(function(){
 	//Change reaction time in formula
 	$('#valueA150').on('click', function() {
 		$('#formulaInputA input').val('150');
+		fitts();
 	});
 
 	$('#valueA570').on('click', function() {
 		$('#formulaInputA input').val('570');
+		fitts();
 	});
 	
 	//Easter egg
 	$('.startScreenHint span').on('click', function() {
 		easerCounter++;
 		if (easerCounter == 5) {
-			//TODO show easter egg
+			//show easter egg
+			easterEgg();
 		}
 	});
 
@@ -51,6 +54,10 @@ $(document).ready(function(){
 		scaleImage(-25);
 	});
 
+	//reset formula
+	$('#resetFormulaCtrl').on('click', function() {
+		resetFormula();
+	});
 	
 
 	//dragable elements

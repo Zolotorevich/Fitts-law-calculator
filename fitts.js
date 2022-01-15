@@ -1,8 +1,15 @@
 //global Fitts's law varibles
-indexOfDifficulty = 2.2;
-widthMultiplier = 4;
-shannonFormula = true;
-minimalWidth = 64; //px
+var fittsMT = 1;
+var fittsA = 50;
+var fittsB = 150;
+var fittsID;
+var fittsD;
+var fittsW;
+var fittsH;
+var fittsRatio = 4;
+
+var minimalWidth = 64; //px
+var calculateSize = true;
 
 //calculate Fitts's law
 function fitts() {
@@ -23,38 +30,69 @@ function fitts() {
 	verticalDistance = Math.abs(startPositionY - endPositionY);
 
 	//calculate absolute distance
-	absoluteDistance = Math.round(Math.sqrt((verticalDistance ** 2) + (horizontalDistance ** 2)));
+	fittsD = Math.round(Math.sqrt((verticalDistance ** 2) + (horizontalDistance ** 2)));
 
-	//check what formula to use
-	if (shannonFormula) {
-		//using Shannon formula: ID = Log2( D/W + 1 )
-		//W = D / (ID^2-1)
-		tagetWidth = absoluteDistance / ((indexOfDifficulty ** 2) - 1);
+	//check what to calculate
+	if (calculateSize) {
+		
 	} else {
-		//using Fitts formula: ID = log2( 2 * D/W )
-		//W = 2*D / 2^ID
-		tagetWidth = (2 * absoluteDistance) / (indexOfDifficulty ** 2);
-	};
 
-	//round tagetWidth
-	tagetWidth = Math.round(tagetWidth);
+	}
 
-	//check if size is too small
-	if (tagetWidth <= minimalWidth) {
-		//replace tagretWidth with minimal
-		tagetWidth = minimalWidth;
-	};
 
-	//apply new size
-	$('#end').css({
-		'width':tagetWidth + 'px',
-		'height':(tagetWidth / widthMultiplier) + 'px'
-	});
+	//update formula inputs
+	updateFormulaInputs();
 
-	//show result
-	$("#result").html(tagetWidth + ' × ' + Math.round((tagetWidth / widthMultiplier)) + 'px');
-
-	
 	//TODO correct position
 
 };
+
+	//check if size is too small
+	// if (tagetWidth <= minimalWidth) {
+	// 	//replace tagretWidth with minimal
+	// 	tagetWidth = minimalWidth;
+	// };
+
+	// //apply new size
+	// $('#end').css({
+	// 	'width':tagetWidth + 'px',
+	// 	'height':(tagetWidth / widthMultiplier) + 'px'
+	// });
+
+	// //show result
+	// $("#result").html(tagetWidth + ' × ' + Math.round((tagetWidth / widthMultiplier)) + 'px');
+
+
+//update formula inputs
+function updateFormulaInputs() {
+	$('#formulaInputMT input').val(fittsMT);
+	$('#formulaInputA input').val(fittsA);
+	$('#formulaInputB input').val(fittsB);
+	$('#formulaInputID input').val(fittsID);
+	$('#formulaInputW input').val(fittsW);
+	$('#formulaInputHeight input').val(fittsH);
+	$('#formulaInputD input').val(fittsD);
+	$('#formulaInputRatio input').val(fittsRatio);
+}
+
+//TODO reset formula values
+function resetFormula() {
+	//TODO check what type of mesure
+	if (calculateSize) {
+		//init default values
+		fittsMT = 1;
+		fittsA = 50;
+		fittsB = 150;
+		fittsRatio = 4;
+
+	} else {
+		//init default values
+		fittsA = 50;
+		fittsB = 150;
+	}
+
+	
+
+	//recalculate formula
+	fitts();
+}

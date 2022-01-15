@@ -14,3 +14,17 @@ function hideStartScreen() {
         scrollTop: $("#imageControlsBar").offset().top
     }, 1000);
 }
+
+//TODO Easter egg
+function easterEgg() {
+	//change background
+	$('body').css({
+		'background-color' : '#dce9f6'
+	});
+
+	//change hints color
+	$('.formulaHints div').css({'color' : '#1a1b1d'});
+
+	//change formula color
+	$('#formulaImg').css({'filter' : 'invert()'});
+}
