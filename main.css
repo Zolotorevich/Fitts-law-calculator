@@ -45,6 +45,14 @@
 	--topbar-hover:rgba(255,255,255,.1);
 }
 
+@keyframes shake {
+	0% { transform: translate(2px); }
+	25% { transform: translate(-2px); }
+	50% { transform: translate(2px); }
+	75% { transform: translate(6px); }
+	100% { transform: translate(2px); }
+  }
+
 html {
     -webkit-font-smoothing: antialiased;
 }
@@ -310,6 +318,7 @@ body {
 	justify-content: space-between;
 	z-index: 2000;
 	position: relative;
+	/* margin-top:100vh; */
 }
 
 .imageLeftControls, .imagerightControls {
@@ -411,7 +420,8 @@ body {
 
 /* IMAGE CONTAINER */
 #imageViewContainer {
-	width: 100%;
+	width: 400%;
+	min-height: calc(100vh - 54px);
 	position: relative;
 	z-index: 2000;
 	text-align: center;
@@ -419,6 +429,7 @@ body {
 	-webkit-backdrop-filter: sepia(100%) blur(4px);
 	backdrop-filter: sepia(100%) blur(4px);
 	overflow-x: hidden;
+	margin:0 0 0 -150%;
 }
 
 #imageContainer {
@@ -426,6 +437,6 @@ body {
 }
 
 #imageContainer img {
-	transition: all 1s;
-	margin:0 0 200px 0;
+	transition: filter 1s;
+	margin:0 0 150px 0;
 }

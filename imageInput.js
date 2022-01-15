@@ -1,21 +1,23 @@
 //global image input varibles
-imageScale = 1; //1 is 100%
-imageOriginalWidth = 0;
+var imageScale = 100;
+var imageOriginalWidth = 0;
+var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
 
 //show image from input
 function showImageFromFileInput() {
-	//TODO add fade in and out effects
-
-	//clear current image
-	$("#imageContainer").html("");
-
-	//regx of image file name
-	var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
 
 	//check if user upload image
 	if (regex.test($("#fileupload").val().toLowerCase())) {
+
+		//check if we on start screen
+		if ($('#startScreen').css('display') != 'none') {
+			hideStartScreen();
+		}
+
+		//clear current image container
+		$("#imageContainer").html("");
+
 		//add image tag in div
-		$("#imageContainer").show();
 		$("#imageContainer").append("<img />");
 
 		//create FileReader obj
@@ -34,15 +36,71 @@ function showImageFromFileInput() {
 			imageOriginalWidth = $('#imageContainer img').width();
 		});
 
-		//TODO try get the filename
-		console.log('filename: ' + $("#fileupload")[0].files[0].name);
+		//Update filename
+		$('#imageControlFile').html($("#fileupload")[0].files[0].name);
+
+		//reset image scale
+		resetImageScale();
 
 	} else {
-		//TODO display error: it's not an image
-		alert("Please upload a valid image file.");
+		//error: it's not an image
+		displayErrorImageType();
 	}
 
 };
+
+//Display upload image error
+function displayErrorImageType() {
+	//check if we on start screen
+	if ($('#startScreen').css('display') != 'none') {
+		//disaply error
+		$('#startScreenUploadBtn h1').html('Select .png or .jpg file');
+
+		//shake upload button and change it color
+		$('#startScreenUploadBtn').css({
+			'animation' : 'shake 0.2s',
+			'animation-iteration-count' : 'infinite',
+			'background-color' : '#df2222'
+		});
+
+		setTimeout(function(){
+			//stop shaking
+			$('#startScreenUploadBtn').css({
+				'animation' : '',
+				'animation-iteration-count' : '',
+				'background-color' : '#eccc2c'
+			});
+		}, 1000);
+
+	} else {
+		//save current image name
+		currentFileName = $('#imageControlFile').html();
+
+		//display error
+		$('#imageControlFile').html('Select .png or .jpg file');
+
+		//shake upload button
+		$('#imageControlFile').css({
+			'animation' : 'shake 0.2s',
+			'animation-iteration-count' : 'infinite',
+			'background-color' : '#df2222'
+		});
+
+		//stop shaking
+		setTimeout(function(){
+			$('#imageControlFile').css({
+				'animation' : '',
+				'animation-iteration-count' : '',
+				'background-color' : '#eccc2c'
+			});
+		}, 1000);
+
+		//get file name back
+		setTimeout(function(){
+			$('#imageControlFile').html(currentFileName);
+		}, 2000);
+	}
+}
 
 //change image filter
 function changeImageFilter() {
@@ -57,14 +115,34 @@ function changeImageFilter() {
 };
 
 //scale image
-function scaleImage(targetScale) {
+function scaleImage(scaleDelta) {
+
+	//check if minimum or maximum scale reqested
+	if (
+		(imageScale == 25 && scaleDelta < 0)
+		|| (imageScale == 300 && scaleDelta > 0)
+		) {
+		return false;
+	}
+
+	//calculate new scale
+	imageScale = imageScale + scaleDelta;
+
+
 	//apply image new width
 	$('#imageContainer img').css({
-		'width':(imageOriginalWidth * targetScale) + 'px'
+		'width' : (imageOriginalWidth * imageScale / 100) + 'px'
 	});
 
-	//save new scale
-	imageScale = targetScale;
-
-	//TODO display scale
+	//display new scale
+	$('#imageControlScale').html(imageScale + '%');
 };
+
+//reset image scale
+function resetImageScale() {
+	//set default scale
+	imageScale = 100;
+
+	//display new scale
+	$('#imageControlScale').html(imageScale + '%');
+}

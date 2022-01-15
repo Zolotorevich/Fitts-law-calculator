@@ -1,5 +1,6 @@
 //Global variables
 var selectedColor = '#000';
+var easerCounter = 0;
 
 //events handlers
 $(document).ready(function(){
@@ -19,7 +20,7 @@ $(document).ready(function(){
 		changeImageFilter();
 	});
 
-	//Include click in formula
+	//Change reaction time in formula
 	$('#valueA150').on('click', function() {
 		$('#formulaInputA input').val('150');
 	});
@@ -28,13 +29,27 @@ $(document).ready(function(){
 		$('#formulaInputA input').val('570');
 	});
 	
+	//Easter egg
+	$('.startScreenHint span').on('click', function() {
+		easerCounter++;
+		if (easerCounter == 5) {
+			//TODO show easter egg
+		}
+	});
 
-	
+	//file input has a new image
+	$("#fileupload").change( function() {
+		showImageFromFileInput();
+	});
 
-	// //file input has a new image
-	// $("#fileupload").change( function() {
-	// 	showImageFromFileInput();
-	// });
+	//scale plus and minus
+	$('#imageControlScalePlus').on('click', function() {
+		scaleImage(25);
+	});
+
+	$('#imageControlScaleMinus').on('click', function() {
+		scaleImage(-25);
+	});
 
 	
 
@@ -58,31 +73,12 @@ $(document).ready(function(){
 	new DragObject(startElement);
 	new DragObject(endElement);
 
-	// //click on image
-	// $('.dragContainer').on('click', function( event ) {
-	// 	moveStartPositionToClick(event.pageX, event.pageY);
-	// });
-
 });
 
 
 //window scroll event
-// $( document ).scroll(function() {
-// 	line.position();
-// 	lineB.position();
-// 	fitts();
-// });
-
-// //
-// function moveStartPositionToClick(cursorX, cursorY) {
-// 	//check if click wasn't inside end element
-	
-// 	//change start element position
-// 	$('#start').offset({ top: cursorY, left: cursorX });
-
-// 	//redraw lines
-// 	line.position();
-// 	lineB.position();
-// 	fitts();
-
-// }
+$( document ).scroll(function() {
+	line.position();
+	// lineB.position();
+	// fitts();
+});
