@@ -136,6 +136,9 @@ function scaleImage(scaleDelta) {
 
 	//display new scale
 	$('#imageControlScale').html(imageScale + '%');
+
+	//recalculate Fitts' law
+	fitts();
 };
 
 //reset image scale

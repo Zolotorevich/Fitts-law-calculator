@@ -54,7 +54,16 @@ function fitts() {
 
 		fittsID = Math.round(Math.log(2 * fittsD / fittsW) / Math.log(2) * 10) / 10;
 
-		//TODO update markers
+		//calculate target height
+		targetHeight = Math.round(fittsW / 4);
+
+		//update marker label
+		$('#result').html(fittsW + ' × ' + targetHeight + ' px');
+
+		//TODO scale
+
+		//update marker size
+		updateMarkerSize(fittsW, targetHeight);
 
 	} else {
 		//measure time
@@ -62,6 +71,7 @@ function fitts() {
 		fittsMT = Math.round(fittsA + (fittsB * fittsID) * 10) / 10;
 
 		//TODO update marker label
+		$('#result').html(fittsMT + ' ms');
 	}
 
 	//update formula inputs
@@ -69,20 +79,40 @@ function fitts() {
 
 };
 
-	//check if size is too small
-	// if (tagetWidth <= minimalWidth) {
-	// 	//replace tagretWidth with minimal
-	// 	tagetWidth = minimalWidth;
-	// };
+function updateMarkerSize(width,height) {
 
-	// //apply new size
-	// $('#end').css({
-	// 	'width':tagetWidth + 'px',
-	// 	'height':(tagetWidth / widthMultiplier) + 'px'
-	// });
+	var marker = $('#end');
 
-	// //show result
-	// $("#result").html(tagetWidth + ' × ' + Math.round((tagetWidth / widthMultiplier)) + 'px');
+	//apply image scale
+	width = Math.round(width * imageScale / 100);
+	height = Math.round(height * imageScale / 100);
+
+	//check if size too small
+	if (width >= 72) {
+		//calculate delta for reposition
+		widthDelta = (marker.width() - width) / 2;
+		heightDelta = (marker.height() - height) / 2;
+
+		//correct position
+		newLeftPosition = marker.offset().left + widthDelta;
+		newTopPosition = marker.offset().top + heightDelta;
+		marker.offset({ top: newTopPosition, left: newLeftPosition });
+		
+	} else {
+		//size too small, ignore correct position
+		width = 72;
+		height = 18;
+	}
+
+	//apply size
+	marker.css({
+		'width' : width,
+		'height' : height
+	});
+
+
+	//TODO update line position
+}
 
 //change measure type
 function changeMeasure() {
@@ -119,12 +149,25 @@ function updateFormulaInputs() {
 	$('#formulaInputMT input').val(fittsMT);
 	$('#formulaInputA input').val(fittsA);
 	$('#formulaInputB input').val(fittsB);
-	$('#formulaInputID input').val(fittsID);
-	$('#formulaInputW input').val(fittsW);
+
+	//check if ID positive
+	if (fittsID >= 0) {
+		$('#formulaInputID input').val(fittsID);
+	} else {
+		$('#formulaInputID input').val('∞');
+	}
+	
+	//check if width positive and not too big
+	if (fittsW >= 0 && fittsW <= 9000) {
+		$('#formulaInputW input').val(fittsW);
+	} else {
+		$('#formulaInputW input').val('∞');
+	}
+
 	$('#formulaInputD input').val(fittsD);
 }
 
-//check and get values from inputs
+//TODO check and get values from inputs
 function getValues() {
 	
 }

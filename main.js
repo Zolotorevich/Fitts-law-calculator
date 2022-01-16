@@ -1,10 +1,13 @@
 //Global variables
-var selectedColor = '#000';
 var easerCounter = 0;
+var line;
 
 //events handlers
 $(document).ready(function(){
 
+	//DEBUG hide start screen
+	// hideStartScreen();
+	
 	//recolor markers
 	recolorMarkers(markersColor, false);
 
@@ -39,10 +42,7 @@ $(document).ready(function(){
 	//Easter egg
 	$('.startScreenHint span').on('click', function() {
 		easerCounter++;
-		if (easerCounter == 5) {
-			//show easter egg
-			easterEgg();
-		}
+		if (easerCounter == 5) { easterEgg(); }
 	});
 
 	//file input has a new image
@@ -62,6 +62,11 @@ $(document).ready(function(){
 	//reset formula
 	$('#resetFormulaCtrl').on('click', function() {
 		resetFormula();
+	});
+
+	//reset markers position
+	$('#resetMarksCtrl').on('click', function() {
+		resetMarkersPosition();
 	});
 
 	//change measure type
@@ -91,18 +96,63 @@ $(document).ready(function(){
 		disaplayMarkersPalette();
 	});
 	
+	//make start draggable
+	$('#start').draggable(
+	{
+		containment: "document",
+
+		scroll: false,
+
+		drag: function() {
+			line.position();
+			fitts();
+		},
+
+		stop: function(event, ui)
+		{           
+			var top = getTop(ui.helper);
+			ui.helper.css('position', 'fixed');
+			ui.helper.css('top', top+"px");
+		}
+	});
+
+	//make end draggable
+	$('#end').draggable(
+	{
+		containment: "document",
+
+		scroll: false,
+
+		drag: function() {
+			line.position();
+			fitts();
+		},
+
+		stop: function(event, ui)
+		{           
+			var top = getTop(ui.helper);
+			ui.helper.css('position', 'fixed');
+			ui.helper.css('top', top+"px");
+		}
+	});
+
+	function getTop(ele)
+	{
+		var eTop = ele.offset().top;
+		var wTop = $(window).scrollTop();
+		var top = eTop - wTop;
+
+		return top; 
+	}
+
 	
-
-
-
-
 	//OLD
 
 	//dragable elements
 	startElement = document.getElementById('start');
 	endElement = document.getElementById('end');
 
-	//lines between dragable
+	//lines between markers
     line = new LeaderLine(LeaderLine.pointAnchor(startElement), LeaderLine.pointAnchor(endElement),
       {
 		  startPlug: 'behind',
@@ -111,19 +161,16 @@ $(document).ready(function(){
 		  size: 2,
 		  path: 'straight',
 		  startSocket: 'auto',
-		  endSocket: 'auto',
-		  zIndex: 100
+		  endSocket: 'auto'
 		});
 
-	new DragObject(startElement);
-	new DragObject(endElement);
-
+	//calculate and apply marker size
+	fitts();
+	line.position();
 });
 
 
 //window scroll event
 $( document ).scroll(function() {
 	line.position();
-	// lineB.position();
-	// fitts();
 });

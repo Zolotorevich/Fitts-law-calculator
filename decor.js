@@ -15,6 +15,9 @@ function hideStartScreen() {
 	$([document.documentElement, document.body]).animate({
         scrollTop: $("#imageControlsBar").offset().top
     }, 1000);
+
+	//TODO recalculate line position
+	line.position();
 	
 }
 
@@ -60,7 +63,7 @@ function recolorMarkers(inputColor,saveGlobal) {
 	$('#start').css({'border' : '2px solid ' + inputColor});
 
 	//change end marker color
-	$('#end').css({'background-color' : inputColor});
+	$('#end').css({'background-color' : inputColor + 'C0'});
 
 	//TODO recolor lines
 }
@@ -68,5 +71,23 @@ function recolorMarkers(inputColor,saveGlobal) {
 
 //Easter egg
 function easterEgg() {
-	recolorMarkers('#e9ca2c');
+	recolorMarkers('#e9ca2c', true);
+}
+
+//TODO reset markers position
+function resetMarkersPosition() {
+	//reset start marker
+	$('#start').css({
+		'top' : 'calc(100% - 100px)',
+		'left' : 'calc(50% - 100px)'
+	});
+
+	//reset end marker
+	$('#end').css({
+		'top' : 'calc(100% - 100px)',
+		'left' : 'calc(50% + 100px)'
+	});
+
+	//TODO redraw line
+	line.position();
 }
