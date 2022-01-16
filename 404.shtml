@@ -19,6 +19,14 @@
 	<div id="end404"></div>
 
 	<script>
+		var linesArr = [];
+
+		//get random number from -50 to 50
+		function getRandomInt(max) {
+			return Math.floor(Math.random() * 301) - 150;
+		}
+
+		//draw main line
 		line = new LeaderLine(LeaderLine.pointAnchor(start404), LeaderLine.pointAnchor(end404),
 		{
 			startPlug: 'behind',
@@ -30,6 +38,26 @@
 			endSocket: 'auto',
 			zIndex: 100
 		});
+
+		//create array of small lines
+		for (let i = 0; i < 8; i++) {
+			smallLine = new LeaderLine(LeaderLine.pointAnchor(start404), LeaderLine.pointAnchor(end404),
+			{
+				startPlug: 'behind',
+				endPlug: 'behind',
+				color: 'rgba(223, 34, 34, 0.4)',
+				size: 2,
+				path: 'fluid',
+				startSocket: 'auto',
+				endSocket: 'auto',
+				startSocketGravity: [getRandomInt(100), getRandomInt(100)],
+				endSocketGravity: [getRandomInt(100), getRandomInt(100)]
+			});
+
+			linesArr.push(smallLine);
+
+		}
+
 	</script>
 	
 </body>

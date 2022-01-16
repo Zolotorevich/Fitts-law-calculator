@@ -521,12 +521,12 @@ body {
 
 #start404 {
 	position: absolute;
-	top:0;
+	top:calc(50% - 10px);
 	left:0;
 }
 
 #end404 {
 	position: absolute;
 	right: 0;
-	bottom: 0;
+	top: calc(50% - 10px);
 }

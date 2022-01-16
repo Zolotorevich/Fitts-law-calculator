@@ -72,6 +72,7 @@ function fitts() {
 
 		//TODO update marker label
 		$('#result').html(fittsMT + ' ms');
+
 	}
 
 	//update formula inputs
@@ -110,8 +111,8 @@ function updateMarkerSize(width,height) {
 		'height' : height
 	});
 
-
-	//TODO update line position
+	//update line position
+	updateLines();
 }
 
 //change measure type
@@ -142,6 +143,9 @@ function changeMeasure() {
 		//change type
 		calculateSize = true;
 	}
+
+	//recalculate
+	fitts();
 }
 
 //update formula inputs

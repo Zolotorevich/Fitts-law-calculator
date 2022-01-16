@@ -1,15 +1,11 @@
 //Global variables
 var easerCounter = 0;
-var line;
 
 //events handlers
 $(document).ready(function(){
 
 	//DEBUG hide start screen
 	// hideStartScreen();
-	
-	//recolor markers
-	recolorMarkers(markersColor, false);
 
 	//click on upload in mainScreen
 	$('#startScreenUploadBtn').on('click', function() {
@@ -103,8 +99,12 @@ $(document).ready(function(){
 
 		scroll: false,
 
+		start: function() {
+			hideSmallLines();
+		},
+
 		drag: function() {
-			line.position();
+			updateLines();
 			fitts();
 		},
 
@@ -113,6 +113,7 @@ $(document).ready(function(){
 			var top = getTop(ui.helper);
 			ui.helper.css('position', 'fixed');
 			ui.helper.css('top', top+"px");
+			showSmallLines();
 		}
 	});
 
@@ -123,8 +124,12 @@ $(document).ready(function(){
 
 		scroll: false,
 
+		start: function() {
+			hideSmallLines();
+		},
+
 		drag: function() {
-			line.position();
+			updateLines();
 			fitts();
 		},
 
@@ -133,6 +138,7 @@ $(document).ready(function(){
 			var top = getTop(ui.helper);
 			ui.helper.css('position', 'fixed');
 			ui.helper.css('top', top+"px");
+			showSmallLines();
 		}
 	});
 
@@ -146,31 +152,30 @@ $(document).ready(function(){
 	}
 
 	
-	//OLD
-
-	//dragable elements
-	startElement = document.getElementById('start');
-	endElement = document.getElementById('end');
-
-	//lines between markers
-    line = new LeaderLine(LeaderLine.pointAnchor(startElement), LeaderLine.pointAnchor(endElement),
-      {
-		  startPlug: 'behind',
-		  endPlug: 'behind',
-		  color: 'rgba(223, 34, 34, 0.8)',
-		  size: 2,
-		  path: 'straight',
-		  startSocket: 'auto',
-		  endSocket: 'auto'
-		});
+	//draw lines
+	drawLines();
 
 	//calculate and apply marker size
 	fitts();
-	line.position();
+
+	//update lines position
+	updateLines();
+
+	//hide small lines
+	hideSmallLines();
+
+	//recolor markers
+	recolorMarkers(markersColor, false);
+	
 });
 
 
 //window scroll event
 $( document ).scroll(function() {
-	line.position();
+	updateLines();
 });
+
+//get random number from -50 to 50
+function getRandomInt(max) {
+	return Math.floor(Math.random() * 101) - 50;
+}
