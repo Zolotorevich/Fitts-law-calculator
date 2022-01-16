@@ -478,3 +478,40 @@ body {
 	margin:0 0 150px 0;
 	box-shadow: 0 20px 20px rgba(0, 0, 0, 0.8);
 }
+
+/* 404 PAGE */
+.error404header {
+	position: absolute;
+	top:calc(50% - 60px);
+	left:0;
+	width:100%;
+	text-align: center;
+	color: var(--back-color);
+}
+
+.error404header h1 {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-size: 48px;
+}
+
+.error404header a:link, .error404header a:visited {
+	color:var(--formula-hints);
+}
+
+.error404header a:hover {
+	color: var(--dark-yellow-color);
+}
+
+#start404 {
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+#end404 {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}

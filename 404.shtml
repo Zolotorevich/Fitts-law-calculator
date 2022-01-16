@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Error 404, Fitts' law calculator</title>
+	<link rel="stylesheet" href="main.css">
+	<script src="leader-line.min.js"></script>
+	
+</head>
+<body>
+	<div class="error404header">
+		<h1>Error 404: page not found</h1>
+		<a href="/">Return to mainpage</a>
+	</div>
+
+	<div id="start404"></div>
+	<div id="end404"></div>
+
+	<script>
+		line = new LeaderLine(LeaderLine.pointAnchor(start404), LeaderLine.pointAnchor(end404),
+		{
+			startPlug: 'behind',
+			endPlug: 'behind',
+			color: 'rgba(223, 34, 34, 0.8)',
+			size: 2,
+			path: 'straight',
+			startSocket: 'auto',
+			endSocket: 'auto',
+			zIndex: 100
+		});
+	</script>
+	
+</body>
+</html>
