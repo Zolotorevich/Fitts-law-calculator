@@ -156,7 +156,6 @@ function DragObject(element) {
 		element.style.left = x - mouseOffset.x +'px';
 		//added fitts'
 		line.position();
-		lineB.position();
 		fitts();
 	}
 	

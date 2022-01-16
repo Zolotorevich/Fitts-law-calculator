@@ -69,6 +69,35 @@ function fitts() {
 	// //show result
 	// $("#result").html(tagetWidth + ' × ' + Math.round((tagetWidth / widthMultiplier)) + 'px');
 
+//change measure type
+function changeMeasure() {
+	if(calculateSize) {
+		//change title
+		$('#imageControlMeasureValue').html('Calculate size');
+
+		//disable time input
+		$('#formulaInputMT input').prop( "disabled", true );
+
+		//enable width input
+		$('#formulaInputW input').prop( "disabled", false );
+
+		//change type
+		calculateSize = false;
+
+	} else {
+		//change title
+		$('#imageControlMeasureValue').html('Measure time');
+
+		//enable time input
+		$('#formulaInputMT input').prop( "disabled", false );
+
+		//disable width input
+		$('#formulaInputW input').prop( "disabled", true );
+
+		//change type
+		calculateSize = true;
+	}
+}
 
 //update formula inputs
 function updateFormulaInputs() {
@@ -84,35 +113,14 @@ function updateFormulaInputs() {
 function resetFormula() {
 	//init default values
 	fittsA = 570;
-	fittsB = 50;
+	fittsB = 200;
 
 	//check what type of mesure
 	if (calculateSize) {
-		fittsMT = 1;
+		fittsMT = 1000;
 	}
 
 	//recalculate formula
-	fitts();
-}
-
-//change measure type
-function changeMeasure() {
-	if(calculateSize) {
-		//change title
-		$('#imageControlMeasureValue').html('Calculate size');
-
-		//change type
-		calculateSize = false;
-
-	} else {
-		//change title
-		$('#imageControlMeasureValue').html('Measure time');
-
-		//change type
-		calculateSize = true;
-	}
-
-	//recalculate
 	fitts();
 }
 

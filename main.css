@@ -237,7 +237,7 @@ body {
 	-webkit-backdrop-filter: sepia(100%) blur(4px);
 	backdrop-filter: sepia(100%) blur(4px);
 	z-index: 1000;
-	/* display: none; */
+	display: none;
 }
 
 .startScreenHint {
@@ -303,14 +303,14 @@ body {
 	height:20px;
 	left:calc(50% - 330px);
 	top:calc(50% + 55px);
-	border:2px solid #df2222;
+	border:2px;
+	border-style: solid;
 	border-radius: 40px;
 }
 
 #start div {
 	width: 18px;
 	height: 18px;
-	background-color: #df2222;
 	border-radius: 40px;
 	margin:1px 0 0 1px;
 }
@@ -319,7 +319,6 @@ body {
 	position: fixed;
 	width:100px;
 	height:25px;
-	background-color:#df2222;
 	color:#fff;
 	border-radius: 4px;
 	opacity: .5;
@@ -334,7 +333,7 @@ body {
 	background-color: rgba(0, 0, 0, 0.85);
 	-webkit-backdrop-filter: sepia(100%) blur(4px);
 	backdrop-filter: sepia(100%) blur(4px);
-	display: none;
+	display: flex;
 	justify-content: space-between;
 	z-index: 2000;
 	position: relative;
@@ -342,7 +341,7 @@ body {
 }
 
 .imageLeftControls, .imagerightControls {
-	width: 300px;
+	width: 400px;
 }
 
 .imageLeftControls div {
@@ -353,7 +352,7 @@ body {
 	float:right;
 }
 
-#imageControlColor:hover, #imageControlMeasureValue:hover, #imageControlBW:hover, #imageControlScalePlus:hover, #imageControlScaleMinus:hover {
+#imageControlColor:hover, #imageControlMeasureValue:hover, #imageControlBW:hover, #imageControlScalePlus:hover, #imageControlScaleMinus:hover, .paletteControl:hover {
 	background-color: var(--topbar-hover);
 	cursor: pointer;
 }
@@ -369,9 +368,92 @@ body {
 	border-radius: 4px;
 }
 
+.paletteControl {
+	padding:19px 6px 0 6px;
+	height:35px;
+}
+
+.paletteControl:first-child {
+	padding:19px 6px 0 20px !important;
+}
+
+.paletteControl:last-child {
+	padding:19px 20px 0 6px !important;
+}
+
+.paletteCtrl {
+	width: 16px;
+	height: 16px;
+	border-radius: 4px;
+}
+
+#markerColorPalette {
+	display: none;
+}
+
+.colorCtrlWhite {
+	background-color: #fff;
+}
+.colorCtrlWhiteBorder {
+	border-color: #fff !important;
+}
+
+.colorCtrlBlack {
+	background-color: #000;
+}
+.colorCtrlBlackBorder {
+	border-color: #000 !important;
+}
+
+.colorCtrlPurple {
+	background-color: #d91ce0;
+}
+.colorCtrlPurpleBorder {
+	border-color: #d91ce0 !important;
+}
+
+.colorCtrlDarkPurple {
+	background-color: #7b137f;
+}
+.colorCtrlDarkPurpleBorder {
+	border-color: #7b137f !important;
+}
+
+.colorCtrlCyan {
+	background-color: #1ce0c2;
+}
+.colorCtrlCyanBorder {
+	border-color: #1ce0c2 !important;
+}
+
+.colorCtrlDarkCyan {
+	background-color: #187a6b;
+}
+.colorCtrlDarkCyanBorder {
+	border-color: #187a6b !important;
+}
+
 .colorCtrlRed {
 	background-color: #df2222;
 }
+.colorCtrlRedBorder {
+	border-color: #df2222 !important;
+}
+
+.colorCtrlDarkRed {
+	background-color: #7a0b0c;
+}
+.colorCtrlDarkRedBorder {
+	border-color: #7a0b0c !important;
+}
+
+.colorCtrlEaster {
+	background-color: #969765;
+}
+
+
+
+
 
 #imageControlMeasureValue {
 	padding:19px 10px 0 10px;
@@ -449,7 +531,7 @@ body {
 	backdrop-filter: sepia(100%) blur(4px);
 	overflow-x: hidden;
 	margin:0 0 0 -150%;
-	display: none;
+	/* display: none; */
 }
 
 #imageContainer {

@@ -65,6 +65,19 @@ $(document).ready(function(){
 	$('#imageControlMeasureValue').on('click', function() {
 		changeMeasure();
 	});
+
+	//select color
+	$('#imageControlColor').on('click', function() {
+		disaplayMarkersPalette();
+	});
+
+	$('#markerColorPalette div').on('click', function() {
+		disaplayMarkersPalette($(this).children( 'div' ).attr( "data-selectedColor" ));
+	});
+
+	$('.paletteCtrl').on('click', function() {
+		disaplayMarkersPalette();
+	});
 	
 	
 

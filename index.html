@@ -15,8 +15,11 @@
 <body>
 
 	<input type="file" name="testFile" id="fileupload">
-	<div id="start"><div></div></div>
-	<div id="end"><div id="result"></div></div>
+	<div id="start" class="colorCtrlRedBorder">
+		<div class="colorCtrlRed"></div>
+	</div>
+	
+	<div id="end" class="colorCtrlRed"><div id="result"></div></div>
 
 
 	<!-- FORMULA VIEW BEGIN -->
@@ -181,6 +184,41 @@
 			<div id="imageControlColor">
 				<div class="colorCtrlRed"></div>
 			</div>
+			
+			<div id="markerColorPalette">
+				<div class="paletteControl">
+					<div class="paletteCtrl colorCtrlWhite" data-selectedColor="colorCtrlWhite"></div>
+				</div>
+
+				<div class="paletteControl">
+					<div class="paletteCtrl colorCtrlBlack" data-selectedColor="colorCtrlBlack"></div>
+				</div>
+
+				<div class="paletteControl">
+					<div class="paletteCtrl colorCtrlRed" data-selectedColor="colorCtrlRed"></div>
+				</div>
+
+				<div class="paletteControl">
+					<div class="paletteCtrl colorCtrlPurple" data-selectedColor="colorCtrlPurple"></div>
+				</div>
+
+				<div class="paletteControl">
+					<div class="paletteCtrl colorCtrlCyan" data-selectedColor="colorCtrlCyan"></div>
+				</div>
+
+				<div class="paletteControl">
+					<div class="paletteCtrl colorCtrlDarkRed" data-selectedColor="colorCtrlDarkRed"></div>
+				</div>
+
+				<div class="paletteControl">
+					<div class="paletteCtrl colorCtrlDarkPurple" data-selectedColor="colorCtrlDarkPurple"></div>
+				</div>
+
+				<div class="paletteControl">
+					<div class="paletteCtrl colorCtrlDarkCyan" data-selectedColor="colorCtrlDarkCyan"></div>
+				</div>
+
+			</div>
 
 			<div id="imageControlMeasureValue">
 				Measure time
@@ -192,7 +230,6 @@
 
 		<div class="imagerightControls">
 			
-
 			<div id="imageControlScalePlus"><div></div></div>
 
 			<div id="imageControlScale">
@@ -205,9 +242,10 @@
 
 	</div>
 
+
 	<div id="imageViewContainer">
 
-		<div id="imageContainer"></div>
+		<div id="imageContainer"><img src="2-0-Main-feed.png" alt=""></div>
 
 	</div>
 
