@@ -60,7 +60,18 @@ $(document).ready(function(){
 	$('#resetFormulaCtrl').on('click', function() {
 		resetFormula();
 	});
+
+	//change measure type
+	$('#imageControlMeasureValue').on('click', function() {
+		changeMeasure();
+	});
 	
+	
+
+
+
+
+	//OLD
 
 	//dragable elements
 	startElement = document.getElementById('start');

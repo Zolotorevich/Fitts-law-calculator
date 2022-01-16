@@ -95,6 +95,27 @@ function resetFormula() {
 	fitts();
 }
 
+//change measure type
+function changeMeasure() {
+	if(calculateSize) {
+		//change title
+		$('#imageControlMeasureValue').html('Calculate size');
+
+		//change type
+		calculateSize = false;
+
+	} else {
+		//change title
+		$('#imageControlMeasureValue').html('Measure time');
+
+		//change type
+		calculateSize = true;
+	}
+
+	//recalculate
+	fitts();
+}
+
 //check and get values from inputs
 function getValues() {
 	
