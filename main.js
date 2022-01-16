@@ -23,11 +23,13 @@ $(document).ready(function(){
 	//Change reaction time in formula
 	$('#valueA150').on('click', function() {
 		$('#formulaInputA input').val('150');
+		fittsA = 250;
 		fitts();
 	});
 
 	$('#valueA570').on('click', function() {
 		$('#formulaInputA input').val('570');
+		fittsA = 570;
 		fitts();
 	});
 	

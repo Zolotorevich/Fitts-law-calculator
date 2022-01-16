@@ -217,6 +217,7 @@ body {
 	-webkit-backdrop-filter: sepia(100%) blur(4px);
 	backdrop-filter: sepia(100%) blur(4px);
 	z-index: 1000;
+	display: none;
 }
 
 .startScreenHint {

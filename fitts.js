@@ -1,11 +1,10 @@
 //global Fitts's law varibles
-var fittsMT = 1;
-var fittsA = 50;
-var fittsB = 150;
-var fittsID;
-var fittsD;
-var fittsW;
-var fittsH;
+var fittsMT = 1000;
+var fittsA = 570;
+var fittsB = 200;
+var fittsID = 2.3;
+var fittsD = 300;
+var fittsW = 160;
 var fittsRatio = 4;
 
 var minimalWidth = 64; //px
@@ -34,16 +33,24 @@ function fitts() {
 
 	//check what to calculate
 	if (calculateSize) {
-		
+		//W = D * 2 ^ ( ((a - MT) / b) + 1 )
+		exponent = ((fittsA - fittsMT) / fittsB) + 1;
+		fittsW = Math.round(fittsD * (2 ** exponent));
+
+		fittsID = Math.round(Math.log(2 * fittsD / fittsW) / Math.log(2) * 10) / 10;
+
+		//TODO update markers
+
 	} else {
+		//measure time
+		fittsID = Math.round(Math.log(2 * fittsD / fittsW) / Math.log(2) * 10) / 10;
+		fittsMT = Math.round(fittsA + (fittsB * fittsID) * 10) / 10;
 
+		//TODO update marker label
 	}
-
 
 	//update formula inputs
 	updateFormulaInputs();
-
-	//TODO correct position
 
 };
 
@@ -70,29 +77,25 @@ function updateFormulaInputs() {
 	$('#formulaInputB input').val(fittsB);
 	$('#formulaInputID input').val(fittsID);
 	$('#formulaInputW input').val(fittsW);
-	$('#formulaInputHeight input').val(fittsH);
 	$('#formulaInputD input').val(fittsD);
-	$('#formulaInputRatio input').val(fittsRatio);
 }
 
-//TODO reset formula values
+//reset formula values
 function resetFormula() {
-	//TODO check what type of mesure
+	//init default values
+	fittsA = 570;
+	fittsB = 50;
+
+	//check what type of mesure
 	if (calculateSize) {
-		//init default values
 		fittsMT = 1;
-		fittsA = 50;
-		fittsB = 150;
-		fittsRatio = 4;
-
-	} else {
-		//init default values
-		fittsA = 50;
-		fittsB = 150;
 	}
-
-	
 
 	//recalculate formula
 	fitts();
+}
+
+//check and get values from inputs
+function getValues() {
+	
 }
