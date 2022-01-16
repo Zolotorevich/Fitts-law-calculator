@@ -10,6 +10,21 @@ var fittsRatio = 4;
 var minimalWidth = 64; //px
 var calculateSize = true;
 
+//reset formula values
+function resetFormula() {
+	//init default values
+	fittsA = 570;
+	fittsB = 200;
+
+	//check what type of mesure
+	if (calculateSize) {
+		fittsMT = 1000;
+	}
+
+	//recalculate formula
+	fitts();
+}
+
 //calculate Fitts's law
 function fitts() {
 	//get position of start element
@@ -107,21 +122,6 @@ function updateFormulaInputs() {
 	$('#formulaInputID input').val(fittsID);
 	$('#formulaInputW input').val(fittsW);
 	$('#formulaInputD input').val(fittsD);
-}
-
-//reset formula values
-function resetFormula() {
-	//init default values
-	fittsA = 570;
-	fittsB = 200;
-
-	//check what type of mesure
-	if (calculateSize) {
-		fittsMT = 1000;
-	}
-
-	//recalculate formula
-	fitts();
 }
 
 //check and get values from inputs

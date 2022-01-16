@@ -5,6 +5,9 @@ var easerCounter = 0;
 //events handlers
 $(document).ready(function(){
 
+	//recolor markers
+	recolorMarkers(markersColor, false);
+
 	//click on upload in mainScreen
 	$('#startScreenUploadBtn').on('click', function() {
 		$("#fileupload").click();
@@ -72,7 +75,16 @@ $(document).ready(function(){
 	});
 
 	$('#markerColorPalette div').on('click', function() {
-		disaplayMarkersPalette($(this).children( 'div' ).attr( "data-selectedColor" ));
+		disaplayMarkersPalette();
+		recolorMarkers($(this).children( 'div' ).attr( "data-selectedColor" ), true);
+	});
+
+	$('#markerColorPalette div').on('mouseover', function() {
+		recolorMarkers($(this).children( 'div' ).attr( "data-selectedColor" ), false);
+	});
+
+	$('#markerColorPalette div').on('mouseout', function() {
+		recolorMarkers(markersColor, false);
 	});
 
 	$('.paletteCtrl').on('click', function() {

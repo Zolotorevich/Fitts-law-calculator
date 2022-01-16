@@ -1,3 +1,5 @@
+var markersColor = '#df2222';
+
 //transition from start screen to image view
 function hideStartScreen() {
 	//hide start screen container
@@ -15,7 +17,6 @@ function hideStartScreen() {
     }, 1000);
 	
 }
-
 
 //Select marker color
 function disaplayMarkersPalette(inputColor) {
@@ -35,27 +36,37 @@ function disaplayMarkersPalette(inputColor) {
 		$('#imageControlColor').show();
 	}
 
-	//check if color selected
-	if (inputColor != null) {
-		//change main indicator color
-		$('#imageControlColor div').removeClass();
-		$('#imageControlColor div').addClass(inputColor);
+}
 
-		//change start marker color
-		$('#start div').removeClass();
-		$('#start div').addClass(inputColor);
-		$('#start').removeClass();
-		$('#start').addClass(inputColor + 'Border');
+//recolor markers and color controls
+function recolorMarkers(inputColor,saveGlobal) {
 
-		//change end marker color
-		$('#end').removeClass();
-		$('#end').addClass(inputColor);
+	//check if color needs to be saved
+	if (saveGlobal) {
+		//update global color
+		markersColor = inputColor;
 	}
+	
+	//color selectors
+	$('.paletteCtrl').each(function (){ 
+		 $(this).css({'background-color' : $(this).attr( "data-selectedColor" )});
+	});
 
+	//change main indicator color
+	$('#imageControlColor div').css({'background-color' : inputColor});
+
+	//change start marker color
+	$('#start div').css({'background-color' : inputColor});
+	$('#start').css({'border' : '2px solid ' + inputColor});
+
+	//change end marker color
+	$('#end').css({'background-color' : inputColor});
+
+	//TODO recolor lines
 }
 
 
-//TODO Easter egg
+//Easter egg
 function easterEgg() {
-
+	recolorMarkers('#e9ca2c');
 }
