@@ -26,12 +26,14 @@ $(document).ready(function(){
 	$('#valueA150').on('click', function() {
 		$('#formulaInputA input').val('150');
 		fittsA = 250;
+		makeFormulaNotResorable();
 		fitts();
 	});
 
 	$('#valueA570').on('click', function() {
 		$('#formulaInputA input').val('570');
 		fittsA = 570;
+		makeFormulaNotResorable();
 		fitts();
 	});
 	
@@ -101,6 +103,7 @@ $(document).ready(function(){
 
 		start: function() {
 			hideSmallLines();
+			makeFormulaNotResorable();
 		},
 
 		drag: function() {
@@ -126,6 +129,7 @@ $(document).ready(function(){
 
 		start: function() {
 			hideSmallLines();
+			makeFormulaNotResorable();
 		},
 
 		drag: function() {

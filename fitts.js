@@ -1,28 +1,69 @@
 //global Fitts's law varibles
 var fittsMT = 1000;
 var fittsA = 570;
-var fittsB = 200;
+var fittsB = 150;
 var fittsID = 2.3;
 var fittsD = 300;
 var fittsW = 160;
 var fittsRatio = 4;
 
-var minimalWidth = 64; //px
 var calculateSize = true;
+var fittsMTsaved = 1000;
+
+//reset formula backups
+var fittsMTbackup;
+var fittsAbackup;
+var fittsBbackup;
+var formulaRestorable = false;
 
 //reset formula values
 function resetFormula() {
-	//init default values
-	fittsA = 570;
-	fittsB = 200;
 
-	//check what type of mesure
-	if (calculateSize) {
-		fittsMT = 1000;
+	if (!formulaRestorable) {
+		//check what type of mesure
+		if (calculateSize) {
+			//save current MT value
+			fittsMTbackup = fittsMT;
+
+			//apply default value
+			fittsMT = 1000;
+		}
+
+		//save current values
+		fittsAbackup = fittsA;
+		fittsBbackup = fittsB;
+
+		//apply default values
+		fittsA = 570;
+		fittsB = 200;
+
+		//change title
+		$('#resetFormulaCtrl').html('Undo reset');
+
+		//make restorable
+		formulaRestorable = true;
+		
+	} else {
+		//restore formula values
+		fittsA = fittsAbackup;
+		fittsB = fittsBbackup;
+		if (calculateSize) { fittsMT = fittsMTbackup; }	
+
+		//make formula not restorable
+		makeFormulaNotResorable();
 	}
 
 	//recalculate formula
 	fitts();
+}
+
+
+function makeFormulaNotResorable() {
+	//change title
+	$('#resetFormulaCtrl').html('Reset formula');
+
+	//make formula not restorable
+	formulaRestorable = false;
 }
 
 //calculate Fitts's law
@@ -46,13 +87,18 @@ function fitts() {
 	//calculate absolute distance
 	fittsD = Math.round(Math.sqrt((verticalDistance ** 2) + (horizontalDistance ** 2)));
 
+	//add scale
+	fittsD = Math.round(fittsD / imageScale * 100);
+
 	//check what to calculate
 	if (calculateSize) {
 		//W = D * 2 ^ ( ((a - MT) / b) + 1 )
 		exponent = ((fittsA - fittsMT) / fittsB) + 1;
 		fittsW = Math.round(fittsD * (2 ** exponent));
 
-		fittsID = Math.round(Math.log(2 * fittsD / fittsW) / Math.log(2) * 10) / 10;
+		//calc and round ID
+		fittsID = Math.log(2 * fittsD / fittsW) / Math.log(2);
+		fittsID = Math.round(fittsID * 10) / 10;
 
 		//calculate target height
 		targetHeight = Math.round(fittsW / 4);
@@ -60,17 +106,22 @@ function fitts() {
 		//update marker label
 		$('#result').html(fittsW + ' × ' + targetHeight + ' px');
 
-		//TODO scale
-
 		//update marker size
 		updateMarkerSize(fittsW, targetHeight);
 
 	} else {
-		//measure time
-		fittsID = Math.round(Math.log(2 * fittsD / fittsW) / Math.log(2) * 10) / 10;
-		fittsMT = Math.round(fittsA + (fittsB * fittsID) * 10) / 10;
+		//TODO get width
+		fittsW = $('#end').width(); //not from object, from variable
 
-		//TODO update marker label
+		//calc and round ID
+		fittsID = Math.log(2 * fittsD / fittsW) / Math.log(2);
+		fittsID = Math.round(fittsID * 10) / 10;
+		
+		//measure and round time
+		fittsMT = fittsA + (fittsB * fittsID);
+		fittsMT = Math.round(fittsMT * 10) / 10
+
+		//update marker label
 		$('#result').html(fittsMT + ' ms');
 
 	}
@@ -115,7 +166,7 @@ function updateMarkerSize(width,height) {
 	updateLines();
 }
 
-//change measure type
+//TODO change measure type
 function changeMeasure() {
 	if(calculateSize) {
 		//change title
@@ -123,6 +174,11 @@ function changeMeasure() {
 
 		//disable time input
 		$('#formulaInputMT input').prop( "disabled", true );
+
+		//save time input
+		fittsMTsaved = $('#formulaInputMT input').val();
+
+		//TODO save width ???
 
 		//enable width input
 		$('#formulaInputW input').prop( "disabled", false );
@@ -137,12 +193,18 @@ function changeMeasure() {
 		//enable time input
 		$('#formulaInputMT input').prop( "disabled", false );
 
+		//restore time value
+		fittsMT = fittsMTsaved;
+
 		//disable width input
 		$('#formulaInputW input').prop( "disabled", true );
 
 		//change type
 		calculateSize = true;
 	}
+
+	//make formula not restorable
+	makeFormulaNotResorable();
 
 	//recalculate
 	fitts();
@@ -173,5 +235,8 @@ function updateFormulaInputs() {
 
 //TODO check and get values from inputs
 function getValues() {
-	
+
+
+	//make formula not restorable
+	makeFormulaNotResorable();
 }

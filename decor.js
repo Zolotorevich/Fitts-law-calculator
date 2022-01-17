@@ -99,6 +99,9 @@ function resetMarkersPosition() {
 	//recalculate
 	fitts();
 
+	//update line position
+	updateLines();
+
 }
 
 //draw lines
