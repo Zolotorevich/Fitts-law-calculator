@@ -124,7 +124,7 @@ function drawLines() {
 
 	//create array of small lines
 	for (let i = 0; i < 8; i++) {
-		smallLine = new LeaderLine(LeaderLine.pointAnchor(startElement), LeaderLine.pointAnchor(endElement),
+		smallLine = new LeaderLine(LeaderLine.pointAnchor(startElement), LeaderLine.pointAnchor(endElement, {x: getRandomInt100() + '%', y: getRandomInt100() + '%'}),
 		{
 			startPlug: 'behind',
 			endPlug: 'behind',
@@ -133,8 +133,8 @@ function drawLines() {
 			path: 'fluid',
 			startSocket: 'auto',
 			endSocket: 'auto',
-			startSocketGravity: [getRandomInt(100), getRandomInt(100)],
-			endSocketGravity: [getRandomInt(100), getRandomInt(100)]
+			startSocketGravity: [0, 0],
+			endSocketGravity: [getRandomInt(), getRandomInt()]
 		});
 
 		linesArr.push(smallLine);
@@ -144,8 +144,13 @@ function drawLines() {
 }
 
 //get random number from -50 to 50
-function getRandomInt(max) {
+function getRandomInt() {
 	return Math.floor(Math.random() * 101) - 50;
+}
+
+//get random number from 0 to 100
+function getRandomInt100() {
+	return Math.floor(Math.random() * 101);
 }
 
 //update lines position

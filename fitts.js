@@ -129,10 +129,9 @@ function fitts() {
 		
 		//measure and round time
 		fittsMT = fittsA + (fittsB * fittsID);
-		fittsMT = Math.round(fittsMT * 10) / 10
 
 		//update marker label
-		$('#result').html(fittsMT + ' ms');
+		$('#result').html(Math.round(fittsMT) + ' ms');
 
 	}
 
@@ -222,7 +221,7 @@ function changeMeasure() {
 
 //update formula inputs
 function updateFormulaInputs() {
-	$('#formulaInputMT input').val(fittsMT);
+	$('#formulaInputMT input').val(Math.round(fittsMT));
 	$('#formulaInputA input').val(fittsA);
 	$('#formulaInputB input').val(fittsB);
 
@@ -246,44 +245,6 @@ function updateFormulaInputs() {
 //check and get values from inputs
 function getValues(textInput) {
 
-	//get input value
-	newValue = $(textInput).val();
-
-	//check if value not zero
-	if (newValue > 0) {
-		//update MT
-		if (textInput.includes('formulaInputMT')) {
-			fittsMT = newValue;
-		}
-
-		//update A
-		if (textInput.includes('formulaInputA')) {
-			fittsA = newValue;
-		}
-
-		//update B
-		if (textInput.includes('formulaInputB')) {
-			fittsB = newValue;
-		}
-
-		//update W
-		if (textInput.includes('formulaInputW')) {
-			fittsW = newValue;
-
-			//calculate height
-			newHeight = Math.round(newValue / fittsRatio);
-
-			//update marker width
-			updateMarkerSize(newValue, newHeight);
-		}
-
-		//recalculate
-		fitts();
-
-		//make formula not restorable
-		makeFormulaNotResorable();
-
-	}
 
 	
 }
