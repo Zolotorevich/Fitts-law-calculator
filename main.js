@@ -23,16 +23,48 @@ $(document).ready(function(){
 
  	// values input filters
 	$("#formulaInputMT input").inputFilter(function(value) {
-		return /^-?\d*$/.test(value);
+		//test input value
+		inputTest = (/^-?\d*$/.test(value));
+
+		//check if input number
+		if (inputTest) {
+			getValues('#formulaInputMT input');
+		}
+
+		return inputTest;
 	});
 	$("#formulaInputA input").inputFilter(function(value) {
-		return /^-?\d*$/.test(value);
+		//test input value
+		inputTest = (/^-?\d*$/.test(value));
+
+		//check if input number
+		if (inputTest) {
+			getValues('#formulaInputA input');
+		}
+
+		return inputTest;
 	});
 	$("#formulaInputB input").inputFilter(function(value) {
-		return /^-?\d*$/.test(value);
+		//test input value
+		inputTest = (/^-?\d*$/.test(value));
+
+		//check if input number
+		if (inputTest) {
+			getValues('#formulaInputB input');
+		}
+
+		return inputTest;
 	});
 	$("#formulaInputW input").inputFilter(function(value) {
-		return /^-?\d*$/.test(value);
+		//test input value
+		inputTest = (/^-?\d*$/.test(value));
+
+		//check if input number
+		if (inputTest) {
+			getValues('#formulaInputW input');
+		}
+
+		return inputTest;
 	});
 	
 	//click on upload in mainScreen
@@ -207,7 +239,3 @@ $( document ).scroll(function() {
 	updateLines();
 });
 
-//get random number from -50 to 50
-function getRandomInt(max) {
-	return Math.floor(Math.random() * 101) - 50;
-}

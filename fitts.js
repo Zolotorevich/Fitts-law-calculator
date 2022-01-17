@@ -35,7 +35,7 @@ function resetFormula() {
 
 		//apply default values
 		fittsA = 570;
-		fittsB = 200;
+		fittsB = 150;
 
 		//change title
 		$('#resetFormulaCtrl').html('Undo reset');
@@ -103,16 +103,20 @@ function fitts() {
 		//calculate target height
 		targetHeight = Math.round(fittsW / 4);
 
-		//update marker label
-		$('#result').html(fittsW + ' × ' + targetHeight + ' px');
+		//check if width positive
+		if (fittsW > 0) {
+			//update marker label
+			$('#result').html(fittsW + ' × ' + targetHeight + ' px');
+		} else {
+			//update marker label
+			$('#result').html('— px');
+		}
+		
 
 		//update marker size
 		updateMarkerSize(fittsW, targetHeight);
 
 	} else {
-		//TODO get width
-		fittsW = $('#end').width(); //not from object, from variable
-
 		//calc and round ID
 		fittsID = Math.log(2 * fittsD / fittsW) / Math.log(2);
 		fittsID = Math.round(fittsID * 10) / 10;
@@ -217,26 +221,63 @@ function updateFormulaInputs() {
 	$('#formulaInputB input').val(fittsB);
 
 	//check if ID positive
-	if (fittsID >= 0) {
+	if (fittsID >= 0 && fittsID != Infinity) {
 		$('#formulaInputID input').val(fittsID);
 	} else {
 		$('#formulaInputID input').val('∞');
 	}
 	
 	//check if width positive and not too big
-	if (fittsW >= 0 && fittsW <= 9000) {
+	if (fittsW > 0 && fittsW <= 9000) {
 		$('#formulaInputW input').val(fittsW);
 	} else {
-		$('#formulaInputW input').val('∞');
+		$('#formulaInputW input').val('—');
 	}
 
 	$('#formulaInputD input').val(fittsD);
 }
 
-//TODO check and get values from inputs
-function getValues() {
+//check and get values from inputs
+function getValues(textInput) {
 
+	//get input value
+	newValue = $(textInput).val();
 
-	//make formula not restorable
-	makeFormulaNotResorable();
+	//check if value not zero
+	if (newValue > 0) {
+		//update MT
+		if (textInput.includes('formulaInputMT')) {
+			fittsMT = newValue;
+		}
+
+		//update A
+		if (textInput.includes('formulaInputA')) {
+			fittsA = newValue;
+		}
+
+		//update B
+		if (textInput.includes('formulaInputB')) {
+			fittsB = newValue;
+		}
+
+		//update W
+		if (textInput.includes('formulaInputW')) {
+			fittsW = newValue;
+
+			//calculate height
+			newHeight = Math.round(newValue / 4);
+
+			//update marker width
+			updateMarkerSize(newValue, newHeight);
+		}
+
+		//recalculate
+		fitts();
+
+		//make formula not restorable
+		makeFormulaNotResorable();
+
+	}
+
+	
 }

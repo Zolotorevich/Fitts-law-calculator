@@ -1,10 +1,11 @@
 //global image input varibles
 var imageScale = 100;
-var imageOriginalWidth = 0;
-var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+var imageOriginalWidth = 1;
 
 //show image from input
 function showImageFromFileInput() {
+
+	var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
 
 	//check if user upload image
 	if (regex.test($("#fileupload").val().toLowerCase())) {
