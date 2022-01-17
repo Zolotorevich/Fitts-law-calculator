@@ -33,6 +33,7 @@ $(document).ready(function(){
 
 		return inputTest;
 	});
+	
 	$("#formulaInputA input").inputFilter(function(value) {
 		//test input value
 		inputTest = (/^-?\d*$/.test(value));
@@ -44,6 +45,7 @@ $(document).ready(function(){
 
 		return inputTest;
 	});
+
 	$("#formulaInputB input").inputFilter(function(value) {
 		//test input value
 		inputTest = (/^-?\d*$/.test(value));
@@ -55,6 +57,7 @@ $(document).ready(function(){
 
 		return inputTest;
 	});
+
 	$("#formulaInputW input").inputFilter(function(value) {
 		//test input value
 		inputTest = (/^-?\d*$/.test(value));

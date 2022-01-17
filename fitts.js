@@ -1,12 +1,18 @@
-//global Fitts's law varibles
-var fittsMT = 1000;
-var fittsA = 570;
-var fittsB = 150;
-var fittsID = 2.3;
-var fittsD = 300;
-var fittsW = 160;
+//default Fitts's law varibles
+var fittsMTdefault = 1000;
+var fittsAdefault = 570;
+var fittsBdefault = 150;
 var fittsRatio = 4;
 
+//Fitts's law varibles
+var fittsMT = fittsMTdefault;
+var fittsA = fittsAdefault;
+var fittsB = fittsBdefault;
+var fittsID = 3; //TODO calculate for start screen
+var fittsD = 300; //TODO calculate for start screen
+var fittsW = 160; //TODO calculate for start screen
+
+//values for change measure type
 var calculateSize = true;
 var fittsMTsaved = 1000;
 
@@ -26,7 +32,7 @@ function resetFormula() {
 			fittsMTbackup = fittsMT;
 
 			//apply default value
-			fittsMT = 1000;
+			fittsMT = fittsMTdefault;
 		}
 
 		//save current values
@@ -34,8 +40,8 @@ function resetFormula() {
 		fittsBbackup = fittsB;
 
 		//apply default values
-		fittsA = 570;
-		fittsB = 150;
+		fittsA = fittsAdefault;
+		fittsB = fittsBdefault;
 
 		//change title
 		$('#resetFormulaCtrl').html('Undo reset');
@@ -101,7 +107,7 @@ function fitts() {
 		fittsID = Math.round(fittsID * 10) / 10;
 
 		//calculate target height
-		targetHeight = Math.round(fittsW / 4);
+		targetHeight = Math.round(fittsW / fittsRatio);
 
 		//check if width positive
 		if (fittsW > 0) {
@@ -265,7 +271,7 @@ function getValues(textInput) {
 			fittsW = newValue;
 
 			//calculate height
-			newHeight = Math.round(newValue / 4);
+			newHeight = Math.round(newValue / fittsRatio);
 
 			//update marker width
 			updateMarkerSize(newValue, newHeight);
