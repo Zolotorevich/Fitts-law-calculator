@@ -57,7 +57,7 @@ function resetFormula() {
 	fitts();
 }
 
-
+//make formula not restorable
 function makeFormulaNotResorable() {
 	//change title
 	$('#resetFormulaCtrl').html('Reset formula');

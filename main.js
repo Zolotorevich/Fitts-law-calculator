@@ -1,12 +1,40 @@
 //Global variables
 var easerCounter = 0;
 
-//events handlers
+// Restricts input for each element in the set of matched elements to the given inputFilter
+(function($) {
+	$.fn.inputFilter = function(inputFilter) {
+		return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+		if (inputFilter(this.value)) {
+			this.oldValue = this.value;
+			this.oldSelectionStart = this.selectionStart;
+			this.oldSelectionEnd = this.selectionEnd;
+		} else if (this.hasOwnProperty("oldValue")) {
+			this.value = this.oldValue;
+			this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+		} else {
+			this.value = "";
+		}
+		});
+	};
+	}(jQuery));
+
 $(document).ready(function(){
 
-	//DEBUG hide start screen
-	// hideStartScreen();
-
+ 	// values input filters
+	$("#formulaInputMT input").inputFilter(function(value) {
+		return /^-?\d*$/.test(value);
+	});
+	$("#formulaInputA input").inputFilter(function(value) {
+		return /^-?\d*$/.test(value);
+	});
+	$("#formulaInputB input").inputFilter(function(value) {
+		return /^-?\d*$/.test(value);
+	});
+	$("#formulaInputW input").inputFilter(function(value) {
+		return /^-?\d*$/.test(value);
+	});
+	
 	//click on upload in mainScreen
 	$('#startScreenUploadBtn').on('click', function() {
 		$("#fileupload").click();
