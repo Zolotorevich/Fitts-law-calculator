@@ -19,7 +19,7 @@ function showImageFromFileInput() {
 		$("#imageContainer").html("");
 
 		//add image tag in div
-		$("#imageContainer").append("<img />");
+		$("#imageContainer").append('<img />');
 
 		//create FileReader obj
 		var reader = new FileReader();

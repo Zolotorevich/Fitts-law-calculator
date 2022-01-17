@@ -92,7 +92,7 @@ function resetMarkersPosition() {
 
 	//reset end marker
 	$('#end').css({
-		'top' : 'calc(100% - 100px)',
+		'top' : 'calc(100% - 110px)',
 		'left' : 'calc(50% + 100px)'
 	});
 

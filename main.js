@@ -90,14 +90,36 @@ $(document).ready(function(){
 		$('#formulaInputA input').val('150');
 		fittsA = 250;
 		makeFormulaNotResorable();
+
+		//hide small lines
+		hideSmallLines();
+
+		//recalculate
 		fitts();
+
+		//show small lines
+		showSmallLines();
+
+		//redraw lines
+		updateLines();
 	});
 
 	$('#valueA570').on('click', function() {
 		$('#formulaInputA input').val('570');
 		fittsA = 570;
 		makeFormulaNotResorable();
+
+		//hide small lines
+		hideSmallLines();
+
+		//recalculate
 		fitts();
+
+		//show small lines
+		showSmallLines();
+
+		//redraw lines
+		updateLines();
 	});
 	
 	//Easter egg

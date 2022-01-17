@@ -26,6 +26,14 @@ var formulaRestorable = false;
 function resetFormula() {
 
 	if (!formulaRestorable) {
+		//check if formula alredy default
+		if (fittsA == fittsAdefault && fittsB == fittsBdefault) {
+			//check if we calculating size
+			if (calculateSize && fittsMT == fittsMTdefault || !calculateSize) {
+				return false;
+			}
+		}
+
 		//check what type of mesure
 		if (calculateSize) {
 			//save current MT value
