@@ -74,6 +74,7 @@ function makeFormulaNotResorable() {
 
 //calculate Fitts's law
 function fitts() {
+
 	//get position of start element
 	startPosition = $('#start').offset();
 
@@ -118,7 +119,6 @@ function fitts() {
 			$('#result').html('— px');
 		}
 		
-
 		//update marker size
 		updateMarkerSize(fittsW, targetHeight);
 
@@ -127,7 +127,7 @@ function fitts() {
 		fittsID = Math.log(2 * fittsD / fittsW) / Math.log(2);
 		fittsID = Math.round(fittsID * 10) / 10;
 		
-		//measure and round time
+		//measure time
 		fittsMT = fittsA + (fittsB * fittsID);
 
 		//update marker label
@@ -184,10 +184,10 @@ function changeMeasure() {
 		//disable time input
 		$('#formulaInputMT input').prop( "disabled", true );
 
-		//save time input
-		fittsMTsaved = $('#formulaInputMT input').val();
+		//save time value
+		fittsMTsaved = fittsMT;
 
-		//TODO save width ???
+		//TODO save width ?
 
 		//enable width input
 		$('#formulaInputW input').prop( "disabled", false );
@@ -253,7 +253,7 @@ function getValues(inputName, newValue) {
 		//check if its valid
 		if (MTvalid) {
 			//update value
-			fittsMT = newValue;
+			fittsMT = parseInt(newValue);
 
 			//recalculate
 			fitts();
@@ -278,7 +278,7 @@ function getValues(inputName, newValue) {
 		//check if its valid
 		if (Avalid) {
 			//update value
-			fittsA = newValue;
+			fittsA = parseInt(newValue);
 
 			//recalculate
 			fitts();
@@ -303,7 +303,7 @@ function getValues(inputName, newValue) {
 		//check if its valid
 		if (Bvalid) {
 			//update value
-			fittsB = newValue;
+			fittsB = parseInt(newValue);
 
 			//recalculate
 			fitts();
@@ -328,7 +328,7 @@ function getValues(inputName, newValue) {
 		//check if its valid
 		if (Wvalid) {
 			//update value
-			fittsW = newValue;
+			fittsW = parseInt(newValue);
 
 			//recalculate
 			fitts();

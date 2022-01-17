@@ -4,21 +4,52 @@ var easerCounter = 0;
 
 $(document).ready(function(){
 
-	//check input values
-	$('#formulaInputMT input').focusout(function(){
+	//values inputs
+	inputMT = $('#formulaInputMT input');
+	inputA = $('#formulaInputA input');
+	inputB = $('#formulaInputB input');
+	inputW = $('#formulaInputW input');
+
+	//check input values on focus
+	inputMT.focusout(function(){
 		getValues('formulaInputMT', $(this).val());
 	});
 	
-	$('#formulaInputA input').focusout(function(){
+	inputA.focusout(function(){
 		getValues('formulaInputA', $(this).val());
 	});
 
-	$('#formulaInputB input').focusout(function(){
+	inputB.focusout(function(){
 		getValues('formulaInputB', $(this).val());
 	});
 
-	$('#formulaInputW input').focusout(function(){
+	inputW.focusout(function(){
 		getValues('formulaInputW', $(this).val());
+	});
+
+	//check input values on enter key
+	inputMT.on('keypress',function(e) {
+		if(e.which == 13) {
+			getValues('formulaInputMT', $(this).val());
+		}
+	});
+
+	inputA.on('keypress',function(e) {
+		if(e.which == 13) {
+			getValues('formulaInputA', $(this).val());
+		}
+	});
+
+	inputB.on('keypress',function(e) {
+		if(e.which == 13) {
+			getValues('formulaInputB', $(this).val());
+		}
+	});
+
+	inputW.on('keypress',function(e) {
+		if(e.which == 13) {
+			getValues('formulaInputW', $(this).val());
+		}
 	});
 	
 	//click on upload in mainScreen
