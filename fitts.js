@@ -355,8 +355,8 @@ function shakeInput(inputObj) {
 	//shake input and change it color
 	inputObj.addClass('shakeAndRed');
 
+	//stop shaking
 	setTimeout(function(){
-		//stop shaking
 		inputObj.removeClass('shakeAndRed');
 	}, 500);
 }

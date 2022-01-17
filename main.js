@@ -4,6 +4,24 @@ var easerCounter = 0;
 
 $(document).ready(function(){
 
+	//click on the image
+	$('#imageContainer').on('click', function( event ) {
+		//hide small lines
+		hideSmallLines();
+
+		//reposition main marker
+		$('#start').offset({ top: event.pageY, left: event.pageX });
+
+		//recalculate
+		fitts();
+
+		//show small lines
+		showSmallLines();
+
+		//redraw lines
+		updateLines();
+	});
+
 	//values inputs
 	inputMT = $('#formulaInputMT input');
 	inputA = $('#formulaInputA input');
