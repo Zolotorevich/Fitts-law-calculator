@@ -3,6 +3,23 @@ var easerCounter = 0;
 
 
 $(document).ready(function(){
+
+	//check input values
+	$('#formulaInputMT input').focusout(function(){
+		getValues('formulaInputMT', $(this).val());
+	});
+	
+	$('#formulaInputA input').focusout(function(){
+		getValues('formulaInputA', $(this).val());
+	});
+
+	$('#formulaInputB input').focusout(function(){
+		getValues('formulaInputB', $(this).val());
+	});
+
+	$('#formulaInputW input').focusout(function(){
+		getValues('formulaInputW', $(this).val());
+	});
 	
 	//click on upload in mainScreen
 	$('#startScreenUploadBtn').on('click', function() {

@@ -243,8 +243,128 @@ function updateFormulaInputs() {
 }
 
 //check and get values from inputs
-function getValues(textInput) {
+function getValues(inputName, newValue) {
 
+	//check MT value
+	if (inputName == 'formulaInputMT') {
 
-	
+		MTvalid = !isNaN(newValue) && newValue >= 500;
+
+		//check if its valid
+		if (MTvalid) {
+			//update value
+			fittsMT = newValue;
+
+			//recalculate
+			fitts();
+
+			//make formula not restorable
+			makeFormulaNotResorable();
+
+		} else {
+			//update text input
+			$('#formulaInputMT input').val(fittsMT);
+
+			//shake input and change it color
+			shakeInput($('#formulaInputMT input'));
+		}
+	}
+
+	//check A value
+	if (inputName == 'formulaInputA') {
+
+		Avalid = !isNaN(newValue) && newValue >= 100;
+
+		//check if its valid
+		if (Avalid) {
+			//update value
+			fittsA = newValue;
+
+			//recalculate
+			fitts();
+
+			//make formula not restorable
+			makeFormulaNotResorable();
+
+		} else {
+			//update text input
+			$('#formulaInputA input').val(fittsA);
+
+			//shake input and change it color
+			shakeInput($('#formulaInputA input'));
+		}
+	}
+
+	//check B value
+	if (inputName == 'formulaInputB') {
+
+		Bvalid = !isNaN(newValue) && newValue >= 10 && newValue <= 1000;
+
+		//check if its valid
+		if (Bvalid) {
+			//update value
+			fittsB = newValue;
+
+			//recalculate
+			fitts();
+
+			//make formula not restorable
+			makeFormulaNotResorable();
+
+		} else {
+			//update text input
+			$('#formulaInputB input').val(fittsB);
+
+			//shake input and change it color
+			shakeInput($('#formulaInputB input'));
+		}
+	}
+
+	//check W value
+	if (inputName == 'formulaInputW') {
+
+		Wvalid = !isNaN(newValue) && newValue >= 10 && newValue <= 2500;
+
+		//check if its valid
+		if (Wvalid) {
+			//update value
+			fittsW = newValue;
+
+			//recalculate
+			fitts();
+
+			//change marker size
+			updateMarkerSize(newValue, Math.round(newValue / fittsRatio));
+
+			//make formula not restorable
+			makeFormulaNotResorable();
+
+		} else {
+			//update text input
+			$('#formulaInputW input').val(fittsW);
+
+			//shake input and change it color
+			shakeInput($('#formulaInputW input'));
+		}
+	}
+
+}
+
+//shake text input
+function shakeInput(inputObj) {
+	//shake input and change it color
+	inputObj.css({
+		'animation' : 'shake 0.2s',
+		'animation-iteration-count' : 'infinite',
+		'background-color' : '#df2222'
+	});
+
+	setTimeout(function(){
+		//stop shaking
+		inputObj.css({
+			'animation' : '',
+			'animation-iteration-count' : '',
+			'background-color' : '#000'
+		});
+	}, 500);
 }
