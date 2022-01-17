@@ -301,7 +301,7 @@ body {
 	position: fixed;
 	width:20px;
 	height:20px;
-	left:calc(50% - 330px);
+	left:calc(50% - 335px);
 	top:calc(50% + 55px);
 	border-radius: 40px;
 }
@@ -319,8 +319,8 @@ body {
 	height:10px;
 	color:#fff;
 	border-radius: 4px;
-	top:calc(50% + 52px);
-	left:calc(50% + 20px);
+	top:calc(50% + 62px);
+	left:calc(50% + 126px);
 	line-height: 18px;
 }
 

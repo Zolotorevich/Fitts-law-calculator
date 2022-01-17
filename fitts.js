@@ -1,16 +1,16 @@
 //default Fitts's law varibles
 var fittsMTdefault = 1000;
 var fittsAdefault = 570;
-var fittsBdefault = 150;
+var fittsBdefault = 180;
 var fittsRatio = 4;
 
 //Fitts's law varibles
 var fittsMT = fittsMTdefault;
 var fittsA = fittsAdefault;
 var fittsB = fittsBdefault;
-var fittsID = 3; //TODO calculate for start screen
-var fittsD = 300; //TODO calculate for start screen
-var fittsW = 160; //TODO calculate for start screen
+var fittsID = 3;
+var fittsD = 300;
+var fittsW = 160;
 
 //values for change measure type
 var calculateSize = true;

@@ -215,6 +215,9 @@ $(document).ready(function(){
 
 	//recolor markers
 	recolorMarkers(markersColor, false);
+
+	//update lines one more time because it not straight
+	setTimeout(updateLines(),500);
 	
 });
 
