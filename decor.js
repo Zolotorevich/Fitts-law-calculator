@@ -123,7 +123,7 @@ function drawLines() {
 	});
 
 	//create array of small lines
-	for (let i = 0; i < 8; i++) {
+	for (let i = 0; i < 11; i++) {
 		smallLine = new LeaderLine(LeaderLine.pointAnchor(startElement), LeaderLine.pointAnchor(endElement, {x: getRandomInt100() + '%', y: getRandomInt100() + '%'}),
 		{
 			startPlug: 'behind',
@@ -183,8 +183,8 @@ function showSmallLines() {
 		//show lines
 		linesArr.forEach(item => {
 			item.setOptions({
-				startSocketGravity: [getRandomInt(100), getRandomInt(100)],
-				endSocketGravity: [getRandomInt(100), getRandomInt(100)]
+				startSocketGravity: [getRandomInt(), getRandomInt()],
+				endSocketGravity: [getRandomInt(), getRandomInt()]
 			});
 			item.show('draw');
 		});

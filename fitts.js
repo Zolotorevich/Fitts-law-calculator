@@ -353,18 +353,10 @@ function getValues(inputName, newValue) {
 //shake text input
 function shakeInput(inputObj) {
 	//shake input and change it color
-	inputObj.css({
-		'animation' : 'shake 0.2s',
-		'animation-iteration-count' : 'infinite',
-		'background-color' : '#df2222'
-	});
+	inputObj.addClass('shakeAndRed');
 
 	setTimeout(function(){
 		//stop shaking
-		inputObj.css({
-			'animation' : '',
-			'animation-iteration-count' : '',
-			'background-color' : '#000'
-		});
+		inputObj.removeClass('shakeAndRed');
 	}, 500);
 }

@@ -58,19 +58,10 @@ function displayErrorImageType() {
 		$('#startScreenUploadBtn h1').html('Select .png or .jpg file');
 
 		//shake upload button and change it color
-		$('#startScreenUploadBtn').css({
-			'animation' : 'shake 0.2s',
-			'animation-iteration-count' : 'infinite',
-			'background-color' : '#df2222'
-		});
+		$('#startScreenUploadBtn').addClass('shakeAndRed');
 
 		setTimeout(function(){
-			//stop shaking
-			$('#startScreenUploadBtn').css({
-				'animation' : '',
-				'animation-iteration-count' : '',
-				'background-color' : '#eccc2c'
-			});
+			$('#startScreenUploadBtn').removeClass('shakeAndRed');			
 		}, 1000);
 
 	} else {
@@ -81,19 +72,11 @@ function displayErrorImageType() {
 		$('#imageControlFile').html('Select .png or .jpg file');
 
 		//shake upload button
-		$('#imageControlFile').css({
-			'animation' : 'shake 0.2s',
-			'animation-iteration-count' : 'infinite',
-			'background-color' : '#df2222'
-		});
+		$('#imageControlFile').addClass('shakeAndRed');
 
 		//stop shaking
 		setTimeout(function(){
-			$('#imageControlFile').css({
-				'animation' : '',
-				'animation-iteration-count' : '',
-				'background-color' : '#eccc2c'
-			});
+			$('#imageControlFile').removeClass('shakeAndRed');
 		}, 1000);
 
 		//get file name back

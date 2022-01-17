@@ -47,14 +47,6 @@
 	--topbar-hover:rgba(255,255,255,.1);
 }
 
-@keyframes shake {
-	0% { transform: translate(2px); }
-	25% { transform: translate(-2px); }
-	50% { transform: translate(2px); }
-	75% { transform: translate(6px); }
-	100% { transform: translate(2px); }
-  }
-
 html {
     -webkit-font-smoothing: antialiased;
 	overflow-x: hidden;
@@ -76,6 +68,20 @@ body {
 #fileupload {
 	position: absolute;
 	top:-100px;
+}
+
+@keyframes shake {
+	0% { transform: translate(2px); }
+	25% { transform: translate(-2px); }
+	50% { transform: translate(2px); }
+	75% { transform: translate(6px); }
+	100% { transform: translate(2px); }
+  }
+
+.shakeAndRed {
+	animation: shake 0.2s;
+	animation-iteration-count:infinite;
+	background-color: var(--reset-red) !important;
 }
 
 /* FORMULA VIEW */
@@ -148,6 +154,7 @@ body {
 .formulaInputs input:focus {
 	outline: none;
 	border: 1px solid var(--yellow-color);
+	box-shadow: inset 0px 4px 5px 2px rgba(236,204,44,.4);
 }
 
 .formulaInputLargeHint {
@@ -320,7 +327,7 @@ body {
 	color:#fff;
 	border-radius: 4px;
 	top:calc(50% + 62px);
-	left:calc(50% + 126px);
+	left:calc(50% + 130px);
 	line-height: 18px;
 }
 
@@ -464,7 +471,7 @@ body {
 }
 
 #imageControlFile:hover, #startScreenUploadBtn:hover {
-	background-color: #ffd70f !important;
+	background-color: #ffd70f;
 }
 
 
